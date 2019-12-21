@@ -24,8 +24,9 @@ Only those flags are handled
  
 |U| Less | Pretty 
 --- | --- | ---
+|%[nb]s<br>%[nb]d|the displayed string must have a minimum lenght of nb, <br>if not, add **spaces** at the **beginning** of the string/number<br>to have the right lenght|
+|%[.nb]|nb is the max lenght, if the string is greater than nb, it will be cropped down to nb|
 . (With number)| `display space to have the same lenght`| ft_printf("%5d"21);   display[     21]<br><br>ft_printf("%5.", 12345); output : [12345]
  .(With char array)| `display space to have the same lenght`| ft_printf("%5d"21) ;display[     21]<br><br>ft_printf("%5.", 12345); output : [12345]
-
 
 
