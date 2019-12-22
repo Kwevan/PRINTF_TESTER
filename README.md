@@ -20,7 +20,6 @@ Only those flags are handled
 
 
 
-
  
 |U| Less | Pretty 
 --- | --- | ---
