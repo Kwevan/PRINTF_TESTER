@@ -28,6 +28,7 @@ Only those flags are handled
 |%[*]s|exactly like %nbs but the number is an argument of printf|
 |%[-nb]s|exactly like %nbs except that the spaces are print on the right of the string- overrides 0|
 |%[0nb]d|- still override 0|
+|%[0nb]s|it will just ignore the 0|
 . (With number)| `display space to have the same lenght`| ft_printf("%5d"21);   display[     21]<br><br>ft_printf("%5.", 12345); output : [12345]
  .(With char array)| `display space to have the same lenght`| ft_printf("%5d"21) ;display[     21]<br><br>ft_printf("%5.", 12345); output : [12345]
 
