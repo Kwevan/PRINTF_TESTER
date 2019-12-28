@@ -37,7 +37,7 @@ Only those flags are handled
 | --- | --- |  
 | . | works with %s <br> doesn't work with %d |
 
-
+%5-s sera undef car le - est apres le nb
 
 
 [1]
