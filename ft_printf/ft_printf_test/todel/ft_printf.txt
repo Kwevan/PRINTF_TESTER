@@ -1,0 +1,425 @@
+p0 % .3s
+pp %.50d
+p1 %.4s
+p2 %.10s
+p3 %.4s
+p4 %.5s
+p5 %.3d
+p6 %.0d
+p7 %.4d
+p8 %.10d
+p9 %.50d
+p10 %.1d
+p11 %.3d
+p12 %.0d
+p13 %.3i
+p14 %.0i
+p15 %.4i
+p16 %.10i
+p17 %.50i
+p18 %.1i
+p19 %.3x
+p20 %.0x
+p21 %.3x
+p22 %.0x
+p23 %.4x
+p24 %.10x
+p25 %.50x
+p26 %.1x
+p27 %.3x
+p28 %.0x
+p29 %.3u
+p30 %.0u
+p31 %.4u
+p32 %.10u
+p33 %.50u
+p34 %.1u
+p35 %.3u
+p36 %.0u
+%%
+Hello 42 school! %s%010%%u%d
+%d
+%x
+%x
+%X
+%X
+%x
+%010x
+%010x
+%010x
+%10x
+%10.2x
+%-10x
+%-15x
+%.1x
+%*.*x
+%x
+%%40.50d
+%d
+%-4d
+%.5d
+%p
+%015p
+%15p
+%-15p
+%%p::[%010d]
+ret = %d
+%%p::[%10d]
+ret = %d
+%%p::[%.5d]
+ret = %d
+%%p::[%01.1d]
+ret = %d
+%%p::[%010.1d]
+ret = %d
+%%p::[%01.50d]
+ret = %d
+%%p::[%1.50d]
+ret = %d
+%%p::[%0100.50d]
+ret = %d
+%%p::[%010d]
+ret = %d
+%%p::[%10d]
+ret = %d
+%%p::[%.5d]
+ret = %d
+%%p::[%01.1d]
+ret = %d
+%%p::[%010.1d]
+ret = %d
+%%p::[%01.50d]
+ret = %d
+%%p::[%1.50d]
+ret = %d
+%%p::[%0100.50d]
+ret = %d
+%c%10c%1c%010c%50.2s%50.2s%5.0s%.1s%10s%10sLes bornes :  %d, %d
+%d
+Les bornes :  %u, %u
+%d
+Les bornes :  %x, %x
+%d
+1chiffre 1 %d chiffre 2 %d
+%d
+2chiffre 1 %   d chiffre 2 % d
+%d
+4chiffre 1 %-12d chiffre 2 %-12d
+
+%d
+
+%    i
+%   i
+%1p
+%1p
+t1 %050d
+t2 %-50d
+t3 %50.0d
+t4 %50.50d
+t5 %50.10d
+t6 %*.*d
+t7 %1.50d
+t8 %1.50d
+t9 %2.2d
+t10 %2.2d
+t12 %.0d
+t13 %01d
+t14 %10d
+5chiffre 1 %0d chiffre 2 %0d
+
+%d
+
+6chiffre 1 %012d chiffre 2 %012d
+
+%d
+
+8chiffre 1 %*d chiffre 2 %*d
+
+%d
+
+15chiffre 1 %.d chiffre 2 %.d
+
+%d
+
+4caractere 1 %12c caractere 2 %12c
+
+%d
+
+1caractere 1 %c caractere 2 %c
+
+3caractere 1 %   c caractere 2 % c
+
+1hexa-maj 1 %X hexa-maj 2 %X
+
+%d
+
+3hexa-maj 1 %   X hexa-maj 2 % X
+
+%d
+
+4hexa-maj 1 %12X hexa-maj 2 %int12X
+
+%d
+
+4hexa-maj 1 %-12X hexa-maj 2 %-12X
+
+%d
+
+5hexa-maj 1 %0X hexa-maj 2 %0X
+
+%d
+
+6hexa-maj 1 %012X hexa-maj 2 %012X
+
+%d
+
+8hexa-maj 1 %*X hexa-maj 2 %*X
+
+%d
+
+1pointeur 1 %p pointeur 2 %p
+
+%d
+
+3pointeur 1 %   p pointeur 2 % p
+
+%d
+
+4pointeur 1 %12p pointeur 2 %12p
+
+%d
+
+4pointeur 1 %-12p pointeur 2 %-12p
+
+%d
+
+5pointeur 1 %0p pointeur 2 %0p
+
+%d
+
+6pointeur 1 %012p pointeur 2 %012p
+
+%d
+
+1unsigned 1 %u unsigned 2 %u
+
+%d
+
+3unsigned 1 %   u unsigned 2 % u
+
+%d
+
+4unsigned 1 %12u unsigned 2 %12u
+
+%d
+
+4unsigned 1 %-12u unsigned 2 %-12u
+
+%d
+
+5unsigned 1 %0u unsigned 2 %0u
+
+%d
+
+6unsigned 1 %012u unsigned 2 %012u
+
+%d
+
+8unsigned 1 %*u unsigned 2 %*u
+
+%d
+
+15unsigned 1 %.u unsigned 2 %.u
+
+%d
+
+%s%d
+
+%%
+%d
+
+%-.12u
+%d
+
+%-.12i
+%d
+
+truc%d
+bonjour !
+%d
+04 Test de chiffre sans h : %d, et %d
+03 This is a float : %f
+
+%d
+02 This is a float : %.3f
+
+%d
+01 This is a float : %3f
+
+%d
+000 This is a float : %f
+
+%d
+0 This is a float : %.3f
+
+%d
+00 This is a float : %3f
+
+%d
+1 This is a float : %f
+
+2 This is a float : %.3f
+
+3 This is a float : %3f
+
+4 This is a float : %f
+
+5 This is a float : %f
+
+6 This is a float : %.3f
+
+7 This is a float : %3f
+
+8 This is a float : %3f
+
+9 This is a float : %3f
+
+10 This is a float : %3f
+
+11 This is a float : %3f
+
+12 This is a float : %.0f
+
+13 This is a float : %.0f
+
+14 This is a float : %.0f
+
+15 This is a float : %.0f
+
+16 This is a float : %.0f
+
+17 This is a float : %.0f
+
+18 This is a float : %10.0f
+
+19 This is a float : %10.0f
+
+20 This is a float : %10.5f
+
+21 This is a float : %10.5f
+
+22 This is a float : %10.5f
+
+23 This is a float : %10.5f
+
+24 This is a float : %10.0f
+
+25 This is a float : %10.0f
+
+26 This is a float : %010f
+
+27 This is a float : %-10f
+
+28 This is a float : %015f
+
+29 This is a float : %15f
+
+30 This is a float : %.0f
+
+31 This is an int : %.0d
+
+32 This is an int : %0d
+
+percent 1 %012%percent 2 %12%percent 3 %-12%percent 4 %0%percent 5 % %percent 6 % 15%percent 7 % 12%percent 8 %  *%%n%d
+%n%d
+test %n%d
+%s %n%d
+% .1s %n%d
+%40s %n%d
+%050 d%n%d
+%050 u%n%d
+1string 1 %s string 2 %s
+
+%d
+
+3string 1 %   s string 2 % s
+
+%d
+
+4string 1 %12s string 2 %12s
+
+%d
+
+4string 1 %-12s string 2 %-12s
+
+%d
+
+5string 1 %0s string 2 %0s
+
+%d
+
+6string 1 %012s string 2 %012s
+
+%d
+
+7string 1 %-012s string 2 %012s
+
+%d
+
+st1 %*.*d
+st2 %*.*d
+st3 %*.*d
+st4 %*.*d
+st5 %*.*d
+st6 %*.*d
+st12 %*d
+st13 %*d
+st14 %.*d
+st15 %*d
+st16 %0.*d
+st17 %0.*d
+st7 %*.*s
+st8 %*.*s
+st9 %*.*s
+st10 %*.*s
+st11 %*.*s
+st7 %0.*s
+st8 %.*s
+st9 %*s
+st10 %*s
+st118 %*s
+st119 %*s
+st120 %*s
+st121 %*s
+st118 %*d
+st119 %*d
+st120 %*d
+st121 %*d
+ultimate1 %*d        %*i
+ultimate2 %*d %*s %*x %*X %*i %*u
+ultimate3 %*.*d %*.*s
+ultimate4 %*.*x %*.*X
+ultimate5 %*.*u
+neg1 %*s
+neg2 %*.*s
+neg3 %*s
+neg4 %*.*s
+neg5 %*s
+neg6 %*s
+neg7 %*.*s
+neg8 %*.*s
+neg9 %*.*s
+neg10 %*.*s
+neg11 %*.*s
+neg1 %*d
+neg2 %*.*d
+neg3 %*d
+neg4 %*.*d
+neg5 %*d
+neg6 %*d
+neg7 %*.*d
+neg8 %*.*d
+neg9 %*.*d
+neg10 %*.*d
+neg11 %*.*d
+***************%*s%*d**************%*u*************taaa %100s
