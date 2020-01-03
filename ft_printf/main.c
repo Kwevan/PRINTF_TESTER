@@ -2,9 +2,8 @@
 int main ()
 {
 
-
-
-ft_printf("[%s]", "string");
+ft_printf("[%6s]def\n", "abc");
+//ft_printf("[%1s]def", "abc");
 
 //seulement si . est present
 

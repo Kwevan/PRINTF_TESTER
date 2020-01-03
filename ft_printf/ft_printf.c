@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2019/12/19 14:56:28 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/03 15:39:39 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ int		ft_len_base(long l, int base)
 	return (len);
 }
 
-int		ft_print_s(va_list args)
+int		ft_print_s(va_list args, t_flags flags)
 {
 	char	*s;
 	int		i;
@@ -151,37 +151,40 @@ int		ft_print_s(va_list args)
 	s = va_arg(args, char *);
 	i = 0;
 
-//start
-int dot = 1;
-int min = 20;
-int max = 10;
-int dash = 0;
-int len = strlen(s);
-	if (dot)
+	//start
+//	printf("[l155: %d]", flags.min);
+	int dot = 0;
+	flags.dot = 0;
+	int min = 20;
+//	 min = flags.min;
+	int max = 10;
+	int dash = 0;
+	int len = strlen(s);
+	if (flags.dot)
 	{
 		if (max < len)
 		{	len = max;
 			//s[len] = '\0'; //only if malloc
 		}
-	(dash) ? ft_putnstr(s, len) : 0;
+		(dash) ? ft_putnstr(s, len) : 0;
 		if (min > len)
 			ft_putnchar(' ', min - len);
-	(!dash) ? ft_putnstr(s, len) : 0;
+		(!dash) ? ft_putnstr(s, len) : 0;
 	}
-// end
+	// end
 	else
 		ft_putstr(s);
 	return (strlen(s)); //manque la len avec les flags
 }
 
-int		ft_print_p_c(va_list args)
+int		ft_print_p_c(va_list args, t_flags flags)
 {
 	(void)args;
 	write(1, "%", 1);
 	return (1);
 }
 
-int		ft_print_c(va_list args)
+int		ft_print_c(va_list args, t_flags flags)
 {
 	int c;
 
@@ -190,7 +193,7 @@ int		ft_print_c(va_list args)
 	return (1);
 }
 
-int		ft_print_d(va_list args)
+int		ft_print_d(va_list args, t_flags flags)
 {
 	int n;
 
@@ -199,7 +202,7 @@ int		ft_print_d(va_list args)
 	return (ft_int_len(n));
 }
 
-int		ft_print_u(va_list args)
+int		ft_print_u(va_list args, t_flags flags)
 {
 	unsigned int n;
 
@@ -208,7 +211,7 @@ int		ft_print_u(va_list args)
 	return (ft_u_len(n));
 }
 
-int		ft_print_p(va_list args)
+int		ft_print_p(va_list args, t_flags flags)
 {
 	long n;
 
@@ -218,7 +221,7 @@ int		ft_print_p(va_list args)
 	return (ft_len_base(n, 16) + 2);
 }
 
-int		ft_print_x(va_list args)
+int		ft_print_x(va_list args, t_flags flags)
 {
 	long l;
 
@@ -227,7 +230,7 @@ int		ft_print_x(va_list args)
 	return (ft_len_base(l, 16));
 }
 
-int		ft_print_X(va_list args)
+int		ft_print_X(va_list args, t_flags flags)
 {
 	long l;
 
@@ -240,7 +243,7 @@ int		ft_print_X(va_list args)
  ** c s p d i u x X %
  */
 
-int		functions_init(int (*functions[]) (va_list))
+int		init_functions(int (*functions[]) (va_list, t_flags))
 {
 	functions[0] = ft_print_c;
 	functions[1] = ft_print_s;
@@ -283,70 +286,88 @@ int		ft_index(char *haystack, char needle)
 	return (-1);
 }
 
-/*int		precision(char *s)
+int		ft_nindex(char *haystack, char needle, int n)
 {
-	int len;
 	int i;
-	//	int nb_len;
 
 	i = 0;
-	//	nb_len = ft_int_len));
-	while (true)
-	{ 
-		if ((len = ft_index("0123456789", s[i])) >= 0)
-		{
-			int i;
-
-			i = 0;
-			while (i < len - 1)
-			{
-				ft_putchar(' ');
-				i++;
-			}
-			break;
-		}
-		break;
-	}
-	return (len > 0)  ? len - 1 : 0 ;
-}*/
-
-/*
- ** i = 1 car 0 est le %
- */
-
-int		conv_print(char *s, va_list args, int (*functions[]) (va_list))
-{
-	int i;
-	int pos;
-	int len;
-
-	i = 1;
-	len = 0;
-//	len += precision(&s[i], args);
-	while (s[i])
+	while (haystack[i] && i < n)
 	{
-		if ((pos = ft_index(TYPE_FIELD, s[i])) >= 0)
-		{
-			len = len + functions[pos](args);
-			ft_move(s, s + i + 1);
-			return (len);
-		}
-		//pour reproduire comportement indefini avk printf("%yo", 5); et eviter une boucle infinie
-		/*else
-		  {
-		  ft_putchar('%');
-		  ft_move(s, s + i );
-		  return(len);
-		  }*/
+		if (haystack[i] == needle)
+			return (i);
 		i++;
 	}
+	return (-1);
+}
+
+void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
+{
+	int i;
+	int nb;
+	(void) f_len;
+	flags->dot = 1;
+	flags->dash = 0;
+	flags->min = 20;
+	flags->max = 10;
+
+	i = 0;
+	nb = 0;
+	while (rest[i] && i < f_len + 1)
+	{
+		if ((ft_index("0123456789", rest[i]) + 1) || (ft_index("*", rest[f_len]) + 1))
+		{
+			if (rest[f_len] == '*')
+				nb = va_arg(args, int);
+			else
+				nb += rest[i] - '0';
+//		printf("[l322: %d]", nb);
+		}
+		else
+		{
+			if (ft_nindex(rest, '.', i) + 1)
+				flags->max = nb;
+			else
+			{	
+//				printf("[l330: %d]", nb);
+				flags->min = nb;
+//				printf("[l332: %d]", flags->min);
+				flags->min = nb;
+				nb = 0;
+			}
+		}
+		i++;
+	}
+//	flags->min = 5;
+}
+
+int		parse(char *rest, va_list args)
+{
+	int len;
+	int pos;
+	int f_len;
+	t_flags flags;
+	int		(*functions[9])(va_list, t_flags);
+
+
+	f_len = 0;
+	init_functions(functions);
+	len = 0;
+	while (rest[f_len] && !(ft_index(TYPE_FIELD, rest[f_len]) + 1))
+		f_len++;
+	init_flags(args, &flags, f_len, rest);
+	if ((pos = ft_index(TYPE_FIELD, rest[f_len])) + 1 )
+	{
+		len += functions[pos](args, flags);
+		ft_move(rest, rest + f_len + 1);
+	}
+	else
+		len += functions[8](args, flags);
 	return (len);
 }
 
 int		ft_printf(const char *string, ...)
 {
 	va_list	args;
-	int		(*functions[9]) (va_list);
 	int		i;
 	int		len;
 	char	*s;
@@ -354,20 +375,16 @@ int		ft_printf(const char *string, ...)
 	i = 0;
 	len = 0;
 	va_start(args, string);
-	functions_init(functions);
 	s = strdup(string);
 	while (s[i])
 	{
 		if (s[i] == '%')
-		{
-			len = len + conv_print(&s[i], args, functions);
-		}
+			len += parse(&s[i + 1], args);
 		else
-		{
-			write(1, &s[i], 1);
-			i++;
-		}
+			(++len) ? ft_putchar(s[i]) : 0;
+		i++;
 	}
 	va_end(args);
-	return (i + len);
+	free(s);
+	return (len);
 }
