@@ -2,7 +2,9 @@
 int main ()
 {
 
-ft_printf("[%6s]def\n", "abc");
+printf ("%d",  ft_printf("[050.1s]def\n",  "abc"));
+
+
 //ft_printf("[%1s]def", "abc");
 
 //seulement si . est present

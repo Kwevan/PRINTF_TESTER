@@ -147,39 +147,29 @@ int		ft_print_s(va_list args, t_flags flags)
 {
 	char	*s;
 	int		i;
-
 	s = va_arg(args, char *);
 	i = 0;
 
-	//start
-//	printf("[l155: %d]", flags.min);
-	int dot = 0;
-	flags.dot = 0;
-	int min = 20;
-//	 min = flags.min;
-	int max = 10;
-	int dash = 0;
 	int len = strlen(s);
-	if (flags.dot)
+
+	if(flags.dot)
 	{
-		if (max < len)
-		{	len = max;
-			//s[len] = '\0'; //only if malloc
-		}
-		(dash) ? ft_putnstr(s, len) : 0;
-		if (min > len)
-			ft_putnchar(' ', min - len);
-		(!dash) ? ft_putnstr(s, len) : 0;
+		len = flags.max;
 	}
-	// end
-	else
-		ft_putstr(s);
-	return (strlen(s)); //manque la len avec les flags
+
+		(flags.dash) ? ft_putnstr(s, len) : 0;	
+		ft_putnchar((flags.zero) ? '0' : ' ', flags.min - len);
+		(!flags.dash) ? ft_putnstr(s, len) : 0;
+
+	if (flags.min > len)
+		return (flags.min - len ); //manque de gerer la len avec les flags
+	return (len + flags.min - len );
 }
 
 int		ft_print_p_c(va_list args, t_flags flags)
 {
 	(void)args;
+	(void)flags;
 	write(1, "%", 1);
 	return (1);
 }
@@ -188,6 +178,7 @@ int		ft_print_c(va_list args, t_flags flags)
 {
 	int c;
 
+	(void)flags;
 	c = va_arg(args, int);
 	write(1, &c, 1);
 	return (1);
@@ -197,6 +188,7 @@ int		ft_print_d(va_list args, t_flags flags)
 {
 	int n;
 
+	(void)flags;
 	n = va_arg(args, int);
 	ft_putnbr(n);
 	return (ft_int_len(n));
@@ -206,6 +198,7 @@ int		ft_print_u(va_list args, t_flags flags)
 {
 	unsigned int n;
 
+	(void)flags;
 	n = va_arg(args, unsigned int);
 	ft_putnbr_u(n);
 	return (ft_u_len(n));
@@ -215,6 +208,7 @@ int		ft_print_p(va_list args, t_flags flags)
 {
 	long n;
 
+	(void)flags;
 	n = va_arg(args, long);
 	ft_putstr("0x");
 	ft_putnbr_base(n, "0123456789abcdef");
@@ -225,6 +219,7 @@ int		ft_print_x(va_list args, t_flags flags)
 {
 	long l;
 
+	(void)flags;
 	l = va_arg(args, long);
 	ft_putnbr_base(l, "0123456789abcdef");
 	return (ft_len_base(l, 16));
@@ -234,6 +229,7 @@ int		ft_print_X(va_list args, t_flags flags)
 {
 	long l;
 
+	(void)flags;
 	l = va_arg(args, long);
 	ft_putnbr_base(l, "0123456789ABCDEF");
 	return (ft_len_base(l, 16));
@@ -300,44 +296,62 @@ int		ft_nindex(char *haystack, char needle, int n)
 	return (-1);
 }
 
+void	ft_reset_flags(t_flags *flags)
+{
+	flags->dot = 0;
+	flags->dash = 0;
+	flags->zero = 0;
+	flags->min = 0;
+	flags->max = 0;
+}
+
+int	zero_flag(char *s, int n)
+{
+	int i;
+
+	i = 0;
+	if (s[0] == '0')
+		return (1);
+	while(s[i] && i < n)
+	{
+		if (s[i] == '0' && !(ft_index("0123456789", s[i - 1]) + 1 ))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
 {
 	int i;
 	int nb;
-	(void) f_len;
-	flags->dot = 1;
-	flags->dash = 0;
-	flags->min = 20;
-	flags->max = 10;
-
+	ft_reset_flags(flags);
 	i = 0;
 	nb = 0;
 	while (rest[i] && i < f_len + 1)
 	{
-		if ((ft_index("0123456789", rest[i]) + 1) || (ft_index("*", rest[f_len]) + 1))
+		if ((ft_index("0123456789", rest[i]) + 1) || (ft_index("*", rest[i]) + 1))
 		{
-			if (rest[f_len] == '*')
+			if (rest[i] == '*')
 				nb = va_arg(args, int);
 			else
-				nb += rest[i] - '0';
-//		printf("[l322: %d]", nb);
+				nb = nb * 10 + rest[i] - '0';
 		}
 		else
 		{
-			if (ft_nindex(rest, '.', i) + 1)
+			if (ft_nindex(rest, '.', i) + 1) //le flags.dot pe etre gere ici
 				flags->max = nb;
 			else
-			{	
-//				printf("[l330: %d]", nb);
-				flags->min = nb;
-//				printf("[l332: %d]", flags->min);
+			{
 				flags->min = nb;
 				nb = 0;
 			}
 		}
 		i++;
 	}
-//	flags->min = 5;
+	flags->dot = ft_index(rest, '.') + 1 ? 1 : 0; 
+	flags->dash = ft_index(rest, '-') + 1 ? 1 : 0; 
+	flags->zero = zero_flag(rest, f_len);
 }
 
 int		parse(char *rest, va_list args)

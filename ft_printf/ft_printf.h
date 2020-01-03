@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdio.h>  //ofc remove this
-# include <strin.h>  //ofc remove this
+# include <string.h>  //ofc remove this
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -26,6 +26,7 @@ typedef struct s_flags
 {
 	int dot;
 	int dash;
+	int zero;
 	int min;
 	int max;
 }		t_flags;
