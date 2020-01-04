@@ -184,11 +184,42 @@ int		ft_print_c(va_list args, t_flags flags)
 int		ft_print_d(va_list args, t_flags flags)
 {
 	int n;
+	int len;
+	int zero;
+	char space;
 
-	(void)flags;
+	space = flags.zero ? '0' : ' ';
+	zero = 0;
 	n = va_arg(args, int);
+	len = ft_int_len(n);
+	if (flags.dot && flags.max > len)
+		zero = flags.max - len;
+
+if (flags.dot)
+{
+	if (flags.min > len + zero)
+		ft_putnchar(space, flags.min - (zero + len));
+}
+else
+{
+	if (flags.min > len)
+		ft_putnchar(space, flags.min - len);
+}
+	if(!n && flags.dot)
+		return (0);
+	ft_putnchar('0', zero);
+	
 	ft_putnbr(n);
-	return (ft_int_len(n));
+
+	if(flags.dot && flags.max > len )
+	{
+		if(flags.min >  len + zero)
+				return (len + zero);
+	}	
+	else if(flags.min > len)
+		return (flags.min);
+	
+		return (len);
 }
 
 int		ft_print_u(va_list args, t_flags flags)
@@ -311,7 +342,7 @@ int	zero_flag(char *s, int n)
 		return (1);
 	while(s[i] && i < n)
 	{
-		if (s[i] == '0' && !(ft_index("0123456789", s[i - 1]) + 1 ))
+		if (s[i] == '0' && !(ft_index("0123456789.", s[i - 1]) + 1 ))
 			return (1);
 		i++;
 	}
@@ -336,7 +367,8 @@ void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
 			if (nb < 0)
 			{
 				
-				ft_reset_flags(flags);
+		//		ft_reset_flags(flags);
+				flags->dot = 0;
 				return ;
 			}
 		}

@@ -16,9 +16,9 @@ int main ()
 	// si nb avant, then min = nb avant
 	//si aucun nombre avant mais nb apres 
 		//then min = nb apres et on print des 0 
-printf ("%d\n",  ft_printf("[%d]",  12));
-printf ("%d\n\n",  printf("[%d]",  12));
-
+//printf ("%d\n",  ft_printf("[%d]",  12));
+//printf ("%d\n\n",  printf("[%d]",  12));
+/*
 printf ("%d\n",  ft_printf("[%5d]",  12));
 printf ("%d\n\n",  printf("[%5d]",  12));
 
@@ -34,9 +34,24 @@ printf ("%d\n\n",  printf("[%.d]",  12));
 printf ("%d\n",  ft_printf("[%10.1d]",  12));
 printf ("%d\n\n",  printf("[%10.d]",  12));
 
-printf ("%d\n",  ft_printf("[%0.5d]",  12));
-printf ("%d\n\n",  printf("[%0.5d]",  12));
+printf ("%d\n",  ft_printf("[%0d]",  12));
+printf ("%d\n\n",  printf("[%0d]",  12));
 
+
+
+printf ("%d\n",  ft_printf("[%.0d]",  0));
+printf ("%d\n\n",  printf("[%.0d]",  0));
+*/
+printf ("%d\n",  ft_printf("[%5.0d]",  0));
+printf ("%d\n\n",  printf("[%5.0d]",  0));
+
+printf ("%d\n",  ft_printf("[%10.5d]",  12));
+printf ("%d\n\n",  printf("[%10.5d]",  12));
+
+
+
+printf ("%d\n",  ft_printf("[%11.10d]",  12));
+printf ("%d\n\n",  printf("[%11.10d]",  12));
 
 printf ("%d\n",  ft_printf("[%5.d]",  12));
 printf ("%d\n\n",  printf("[%5.d]",  12));
@@ -59,15 +74,19 @@ printf ("%d\n",  ft_printf("[%*.d]", -2,  12));
 printf ("%d\n\n",  printf("[%*.d]", -2,  12));
 
 
+printf ("%d\n",  ft_printf("[%0.5d]",  12));
+printf ("%d\n\n",  printf("[%0.5d]",  12));
+
+
 //end %d
 
 
 
 //start %s
-/*
 
-printf ("%d\n",  ft_printf("%5s",  "abc"));
-printf ("%d\n",  printf("%5s",  "abc"));
+/*
+printf (" ret: %d\n",  ft_printf("%5s",  "abc"));
+printf (" ret: %d\n",  printf("%5s",  "abc"));
 
 printf ("%d\n",  ft_printf("salut"));
 printf ("%d\n",  printf("salut"));
@@ -101,9 +120,16 @@ printf ("%d\n",  ft_printf("%.s" , "abc"));
 printf ("%d\n\n",  printf("%.s" , "abc"));
 
 
-*/
 
+printf ("%d\n",  ft_printf("[%5.0s]",  "abc"));
+printf ("%d\n\n",  printf("[%5.0s]",  "abc"));
+
+//printf ("%d\n",  ft_printf("[%0.5s]",  "abc")); //undef
+//printf ("%d\n\n",  printf("[%0.5s]",  "abc"));
+
+*/
 //end %s
+
 
 
 
