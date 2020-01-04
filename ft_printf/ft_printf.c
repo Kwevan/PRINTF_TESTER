@@ -153,17 +153,14 @@ int		ft_print_s(va_list args, t_flags flags)
 	int len = strlen(s);
 
 	if(flags.dot)
-	{
-		len = flags.max;
-	}
-
-		(flags.dash) ? ft_putnstr(s, len) : 0;	
-		ft_putnchar((flags.zero) ? '0' : ' ', flags.min - len);
-		(!flags.dash) ? ft_putnstr(s, len) : 0;
+		len = (len > flags.max) ? flags.max : len;
+	(flags.dash) ? ft_putnstr(s, len) : 0;	
+	ft_putnchar((flags.zero) ? '0' : ' ', flags.min - len);
+	(!flags.dash) ? ft_putnstr(s, len) : 0;
 
 	if (flags.min > len)
-		return (flags.min - len ); //manque de gerer la len avec les flags
-	return (len + flags.min - len );
+		return (flags.min);
+	return (len);
 }
 
 int		ft_print_p_c(va_list args, t_flags flags)
@@ -336,6 +333,12 @@ void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
 				nb = va_arg(args, int);
 			else
 				nb = nb * 10 + rest[i] - '0';
+			if (nb < 0)
+			{
+				
+				ft_reset_flags(flags);
+				return ;
+			}
 		}
 		else
 		{
