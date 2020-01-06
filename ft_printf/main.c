@@ -37,6 +37,11 @@ printf ("%d\n\n",   printf("[%10.6d]",  12));
 printf ("%d\n",  ft_printf("[%0d]",  15));
 printf ("%d\n\n",  printf("[%0d]",  15));
 
+printf ("%d\n",  ft_printf("[%.d]",  0));
+printf ("%d\n\n",  printf("[%.d]",  0));
+
+printf ("%d\n",  ft_printf("[%.0d]",  5));
+printf ("%d\n\n",  printf("[%.0d]",  5));
 
 //here printf print nothing for thr %d
 printf ("%d\n",  ft_printf("[%.0d]",  0));
@@ -64,7 +69,7 @@ printf ("%d\n\n",  printf("[%0.5d]",  0));
 
 printf ("%d\n",  ft_printf("[%0.5d]",  2));
 printf ("%d\n\n",  printf("[%0.5d]",  2));
-
+/*
 printf ("%d\n",  ft_printf("[%10.5d]",  12));
 printf ("%d\n\n",  printf("[%10.5d]",  12));
 
@@ -108,7 +113,7 @@ printf ("%d\n\n",  printf("[%*.d]", -2,  11));
 printf ("%d\n",  ft_printf("[%0.5d]",  12));
 printf ("%d\n\n",  printf("[%0.5d]",  12));
 
-
+*/
 //end %d
 
 
