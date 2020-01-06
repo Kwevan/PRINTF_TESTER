@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/06 12:01:34 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/06 17:42:00 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  ** pas compris si je peux nommer mon .h principal comme je veux
  ** return nimp si on passe un unsigned int comme printf
-*/
+ */
 
 void	ft_putchar(char c)
 {
@@ -183,6 +183,7 @@ int		ft_print_c(va_list args, t_flags flags)
 
 int		ft_print_d(va_list args, t_flags flags)
 {
+
 	int n;
 	int len;
 	int zero;
@@ -194,32 +195,41 @@ int		ft_print_d(va_list args, t_flags flags)
 	len = ft_int_len(n);
 	if (flags.dot && flags.max > len)
 		zero = flags.max - len;
-
-if (flags.dot)
-{
-	if (flags.min > len + zero)
-		ft_putnchar(space, flags.min - (zero + len));
-}
-else
-{
-	if (flags.min > len)
-		ft_putnchar(space, flags.min - len);
-}
-	if(!n && flags.dot)
+/*	if (n < 0)
+		{
+		ft_putchar('-');
+		n *= -1;
+}*/
+	if (flags.dot)
+	{
+		if (flags.min > len + zero)
+			ft_putnchar(space, flags.min - (zero + len));
+	}
+	else
+	{
+		if (flags.min > len)
+			ft_putnchar(space, flags.min - len);
+	}
+	if(!n && flags.dot && (flags.min == 0 && flags.max == 0))
+	{		
 		return (0);
+	}
 	ft_putnchar('0', zero);
-	
+
+	if(!n && flags.dot && flags.max == 0)
+		ft_putchar(' ');
+	else
 	ft_putnbr(n);
 
-	if(flags.dot && flags.max > len )
+	if(flags.dot && flags.max > len)
 	{
 		if(flags.min >  len + zero)
-				return (len + zero);
-	}	
+			return (len + zero);
+	//		return (flags.min - (len + zero) + len + zero);
+	}
 	else if(flags.min > len)
 		return (flags.min);
-	
-		return (len);
+	return (len);
 }
 
 int		ft_print_u(va_list args, t_flags flags)
@@ -366,8 +376,8 @@ void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
 				nb = nb * 10 + rest[i] - '0';
 			if (nb < 0)
 			{
-				
-		//		ft_reset_flags(flags);
+
+				//		ft_reset_flags(flags);
 				flags->dot = 0;
 				return ;
 			}
@@ -396,7 +406,6 @@ int		parse(char *rest, va_list args)
 	int f_len;
 	t_flags flags;
 	int		(*functions[9])(va_list, t_flags);
-
 
 	f_len = 0;
 	init_functions(functions);
