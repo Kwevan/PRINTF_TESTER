@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/03 15:39:39 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/06 12:01:34 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
  ** pas compris si je peux nommer mon .h principal comme je veux
  ** return nimp si on passe un unsigned int comme printf
- */
+*/
 
 void	ft_putchar(char c)
 {
