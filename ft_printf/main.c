@@ -69,7 +69,7 @@ printf ("%d\n\n",  printf("[%0.5d]",  0));
 
 printf ("%d\n",  ft_printf("[%0.5d]",  2));
 printf ("%d\n\n",  printf("[%0.5d]",  2));
-/*
+
 printf ("%d\n",  ft_printf("[%10.5d]",  12));
 printf ("%d\n\n",  printf("[%10.5d]",  12));
 
@@ -113,14 +113,14 @@ printf ("%d\n\n",  printf("[%*.d]", -2,  11));
 printf ("%d\n",  ft_printf("[%0.5d]",  12));
 printf ("%d\n\n",  printf("[%0.5d]",  12));
 
-*/
+
 //end %d
 
 
-
+/********************     string     *******************/
 //start %s
 
-/*
+
 printf (" ret: %d\n",  ft_printf("%5s",  "abc"));
 printf (" ret: %d\n",  printf("%5s",  "abc"));
 
@@ -163,7 +163,7 @@ printf ("%d\n\n",  printf("[%5.0s]",  "abc"));
 //printf ("%d\n",  ft_printf("[%0.5s]",  "abc")); //undef
 //printf ("%d\n\n",  printf("[%0.5s]",  "abc"));
 
-*/
+
 //end %s
 
 

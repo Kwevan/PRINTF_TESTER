@@ -63,7 +63,7 @@ int		ft_int_len(int n)
 {
 	int len;
 
-	len = (n < 0) ? 1 : 0;
+	len = 0;
 	if (!n)
 		return (1);
 	while (n != 0)
@@ -150,7 +150,7 @@ int		ft_print_s(va_list args, t_flags flags)
 	s = va_arg(args, char *);
 	i = 0;
 
-	int len = strlen(s);
+	int len = ft_strlen(s);
 
 	if(flags.dot)
 		len = (len > flags.max) ? flags.max : len;
@@ -181,7 +181,58 @@ int		ft_print_c(va_list args, t_flags flags)
 	return (1);
 }
 
+int	get_space(t_flags flags, int new_len)
+{
+	int space;
+
+	space = 0;
+	if (flags.min > new_len)
+		space = flags.min - new_len;
+	return (space);
+}
+
+int	get_dot_zero(t_flags flags, int *len, int nb)
+{
+	int zero;
+
+	zero = 0;
+	if (flags.max == 0 && nb == 0)
+	{
+		*len = 0;
+		return (0);
+	}
+	if (flags.max < 0) //ptet gerer ça dans init flags
+		zero = 0;
+	if (flags.max > *len)
+		zero = flags.max - *len;
+	return(zero);
+}
+
 int		ft_print_d(va_list args, t_flags flags)
+{
+	int nb;
+	int len;
+	int zero;
+	int space;
+
+	nb = va_arg(args, int);
+	len = ft_int_len(nb);
+	zero = (flags.dot) ? get_dot_zero(flags, &len, nb) : 0;
+	space = get_space(flags, len + zero);
+	ft_putnchar(' ', space);
+	if (nb < 0)
+	{
+		ft_putchar('-');
+		nb = -nb;
+		len ++;
+	}
+	ft_putnchar('0', zero);
+	len > 0 ? ft_putnbr(nb) : 0;
+	return (len + zero + space);
+}
+
+
+/*int		ft_print_d(va_list args, t_flags flags)
 {
 
 	int n;
@@ -195,12 +246,12 @@ int		ft_print_d(va_list args, t_flags flags)
 	len = ft_int_len(n);
 	if (flags.dot && flags.max > len)
 		zero = flags.max - len;
-/*	if (n < 0)
+*//*	if (n < 0)
 		{
 		ft_putchar('-');
 		n *= -1;
 }*/
-	if (flags.dot)
+/*	if (flags.dot)
 	{
 		if (flags.min > len + zero)
 			ft_putnchar(space, flags.min - (zero + len));
@@ -231,7 +282,7 @@ int		ft_print_d(va_list args, t_flags flags)
 		return (flags.min);
 	return (len);
 }
-
+*/
 int		ft_print_u(va_list args, t_flags flags)
 {
 	unsigned int n;
@@ -379,6 +430,8 @@ void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
 
 				//		ft_reset_flags(flags);
 				flags->dot = 0;
+				flags->min = -nb; //pas sur
+				flags->dash = 1; //pas sur
 				return ;
 			}
 		}

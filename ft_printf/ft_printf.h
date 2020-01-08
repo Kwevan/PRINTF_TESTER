@@ -31,6 +31,6 @@ typedef struct s_flags
 	int max;
 }		t_flags;
 
-int	ft_printf(const char *string, ...);
-
+int		ft_printf(const char *string, ...);
+int		ft_strlen(const char *s);
 #endif
