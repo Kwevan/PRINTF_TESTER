@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/10 14:31:09 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/10 17:23:33 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int		ft_print_d(va_list args, t_flags flags)
 	{
 		ft_putchar('-');
 		nb = -nb;
-		len ++;
+		len++;
 	}
 	ft_putnchar('0', zero);
 	len > 0 ? ft_putnbr(nb) : 0;
@@ -236,6 +236,8 @@ int	zero_flag(char *s)
 	return (0);
 }
 //comprends plus pk  j'ai du strndup dans parse avec le char de conversion ex je ndup "%2.2s"
+//faudra recoder init_flags
+
 void init_flags(va_list args, t_flags *flags, char *rest)
 {
 	int i;
@@ -277,35 +279,6 @@ void init_flags(va_list args, t_flags *flags, char *rest)
 	flags->dot = ft_index(rest, '.') + 1 ? 1 : 0; 
 	flags->dash = ft_index(rest, '-') + 1 ? 1 : 0; 
 	flags->zero = zero_flag(rest);
-}
-
-int		parse(char *rest, va_list args)
-{
-	int	len;
-	int	pos;
-	int	f_len;
-	char	*s_flags;
-	t_flags flags;
-	int		(*functions[9])(va_list, t_flags);
-
-	f_len = 0;
-	len = 0;
-	init_functions(functions);
-	while (rest[f_len] && !(ft_index(TYPE_FIELD, rest[f_len]) + 1))
-		f_len++;
-	printf("[%s], [%d]", rest, f_len); //here
-	if (!(s_flags = ft_strndup(rest, f_len + 1)))
-		return (0);
-	init_flags(args, &flags, s_flags);
-	free(s_flags);
-	if ((pos = ft_index(TYPE_FIELD, rest[f_len])) + 1 )
-	{
-		len += functions[pos](args, flags);
-		ft_move(rest, rest + f_len + 1);
-	}
-	else
-		len += functions[8](args, flags);
-	return (len);
 }
 
 int		ft_printf(const char *string, ...)

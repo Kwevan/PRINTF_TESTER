@@ -1,127 +1,145 @@
 #include "ft_printf.h"
+#include "limits.h"
 int main ()
 {
 
-	//start %d
-
-	// 5.* = 5
-	// 5. = 5
-
-	// . = 0
-	// .* = 0
-
-
-	// si point
-	//si seul osef
-	// si nb avant, then min = nb avant
-	//si aucun nombre avant mais nb apres 
-	//then min = nb apres et on print des 0 
-	//printf ("%d\n",  ft_printf("[%d]",  12));
-	//printf ("%d\n\n",  printf("[%d]",  12));
-
-	printf ("%d\n",  ft_printf("[%5d]",  3));
-	printf ("%d\n\n",  printf("[%5d]",  3));
-
-
-	printf ("%d\n",  ft_printf("[%05d]",  18));
-	printf ("%d\n\n",  printf("[%05d]",  18));
-
-
-	printf ("%d\n",  ft_printf("[%.d]",  17));
-	printf ("%d\n\n",  printf("[%.d]",  17));
-
-
-	printf ("%d\n",  ft_printf("[%10.6d]",  12));
-	printf ("%d\n\n",   printf("[%10.6d]",  12));
-
-	printf ("%d\n",  ft_printf("[%0d]",  15));
-	printf ("%d\n\n",  printf("[%0d]",  15));
-
-	printf ("%d\n",  ft_printf("[%.d]",  0));
-	printf ("%d\n\n",  printf("[%.d]",  0));
-
-	printf ("%d\n",  ft_printf("[%.0d]",  5));
-	printf ("%d\n\n",  printf("[%.0d]",  5));
-
-	//here printf print nothing for thr %d
-	printf ("%d\n",  ft_printf("[%.0d]",  0));
-	printf ("%d\n\n",  printf("[%.0d]",  0));
-
-
-	printf ("%d\n",  ft_printf("[%5d]",  0));
-	printf ("%d\n\n",  printf("[%5d]",  0));
-
-	printf ("%d\n",  ft_printf("[%d]",  0));
-	printf ("%d\n\n",  printf("[%d]",  0));
-
-
-	printf ("%d\n",  ft_printf("[%5.0d]",  2));
-	printf ("%d\n\n",  printf("[%5.0d]",  2));
-
-
-	//error
-	printf ("%d\n",  ft_printf("[%5.0d]", 0));
-	printf ("%d\n\n",  printf("[%5.0d]", 0));
-
-	//error
-	printf ("%d\n",  ft_printf("[%0.5d]",  0));
-	printf ("%d\n\n",  printf("[%0.5d]",  0));
-
-	printf ("%d\n",  ft_printf("[%0.5d]",  2));
-	printf ("%d\n\n",  printf("[%0.5d]",  2));
-
-	printf ("%d\n",  ft_printf("[%10.5d]",  12));
-	printf ("%d\n\n",  printf("[%10.5d]",  12));
 
 
 
-	printf ("%d\n",  ft_printf("[%11.10d]",  13));
-	printf ("%d\n\n",  printf("[%11.10d]",  13));
-
-	printf ("%d\n",  ft_printf("[%5.d]",  -14));
-	printf ("%d\n\n",  printf("[%5.d]",  -14));
-
-	printf ("%d\n",  ft_printf("[%05d]",  -14));
-	printf ("%d\n\n",  printf("[%05d]",  -14));
-
-	printf ("%d\n",  ft_printf("[%.5d]",  15));
-	printf ("%d\n\n",  printf("[%.5d]",  15));
-
-
-	printf ("%d\n",  ft_printf("[%.5d]",  -3));
-	printf ("%d\n\n",  printf("[%.5d]",  -3));
-
-	printf ("%d\n",  ft_printf("[%05d]",  -3));
-	printf ("%d\n\n",  printf("[%05d]",  -3));
-
-
-	printf ("%d\n",  ft_printf("[%-.5d]",  16));
-	printf ("%d\n\n",  printf("[%-.5d]",  16));
 
 
 
-	printf ("%d\n",  ft_printf("[%5.*d]", 2,  18));
-	printf ("%d\n\n",  printf("[%5.*d]", 2,  18));
+	/********************     %d     *******************/
 
-	printf ("%d\n",  ft_printf("[%5.*d]", -2,  17));
-	printf ("%d\n\n",  printf("[%5.*d]", -2,  17));
+	
+	int size = 1;
+	int i = 0;
+	int nb[1] = {-12};
+	//int nb[6] = {INT_MIN, -451, 0, -0,  451, INT_MAX};
 
-	printf ("%d\n",  ft_printf("[%*.d]", -2,  11));
-	printf ("%d\n\n",  printf("[%*.d]", -2,  11));
+	while (i < size)
+	{
+
+		printf ("%d\n",  ft_printf("1 [%d]",  nb[i]));
+		printf ("%d\n\n",  printf("1 [%d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%5d]",  nb[i]));
+		
+		printf ("%d\n",  ft_printf("[%05d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%05d]",  nb[i]));
 
 
-	printf ("%d\n",  ft_printf("[%0.5d]",  12));
-	printf ("%d\n\n",  printf("[%0.5d]",  12));
+		printf ("%d\n",  ft_printf("[%.d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.d]",  nb[i]));
 
 
-	//end %d
+		printf ("%d\n",  ft_printf("5 [%10.6d]",  nb[i]));
+		printf ("%d\n\n",   printf("5 [%10.6d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%0d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%0d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%.d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%.0d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.0d]",  nb[i]));
+
+		//here printf print nothing for thr %d
+		printf ("%d\n",  ft_printf("[%.0d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.0d]",  nb[i]));
+
+
+		printf ("%d\n",  ft_printf("10 [%5d]", nb[i]));
+		printf ("%d\n\n",  printf("10 [%5d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%d]",  nb[i]));
+
+
+		printf ("%d\n",  ft_printf("[%5.0d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%5.0d]",  nb[i]));
+
+
+		//error
+		printf ("%d\n",  ft_printf("[%5.0d]", nb[i]));
+		printf ("%d\n\n",  printf("[%5.0d]", nb[i]));
+
+		//error
+		printf ("%d\n",  ft_printf("[%0.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%0.5d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("15 [%0.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("15 [%0.5d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%10.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%10.5d]",  nb[i]));
+
+
+
+		printf ("%d\n",  ft_printf("[%11.10d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%11.10d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%5.d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%5.d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%05d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%05d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.5d]",  nb[i]));
+
+
+		printf ("%d\n",  ft_printf("[%.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.5d]",  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%05d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%05d]",  nb[i]));
+
+
+		printf ("%d\n",  ft_printf("[%-.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%-.5d]",  nb[i]));
+
+
+		//	*
+
+		printf ("\n**********  [*]  *********\n\n");
+
+//		int t[] = {}; idealement 2 int array pour chaque * mais flemme
+				
+		printf ("%d\n",  ft_printf("[%*d]", 2,  nb[i]));
+		printf ("%d\n\n",  printf("[%*d]", 2, nb[i]));
+
+		printf ("%d\n",  ft_printf("[%5.*d]", -2,  nb[i]));
+		printf ("%d\n\n",  printf("[%5.*d]", -2,  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%5.*d]", 2,  nb[i]));
+		printf ("%d\n\n",  printf("[%5.*d]", 2,  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%5.*d]", -2,  nb[i]));
+		printf ("%d\n\n",  printf("[%5.*d]", -2,  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%*.d]", -2,  nb[i]));
+		printf ("%d\n\n",  printf("[%*.d]", -2,  nb[i]));
+
+		printf ("%d\n",  ft_printf("[%0.5d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%0.5d]",  nb[i]));
+
+		i++;
+	}
+
+
+
+
+
 
 
 	/********************     string     *******************/
 	//start %s
 
 
-	printf (" ret: %d\n",  ft_printf("%5s",  "abc"));
+/*	printf (" ret: %d\n",  ft_printf("%5s",  "abc"));
 	printf (" ret: %d\n",  printf("%5s",  "abc"));
 
 	printf ("%d\n",  ft_printf("salut"));
@@ -160,7 +178,7 @@ int main ()
 	printf ("%d\n",  ft_printf("[%5.0s]",  "abc"));
 	printf ("%d\n\n",  printf("[%5.0s]",  "abc"));
 
-	/*  negligence flags */
+	/ *  negligence flags * /
 
 	printf ("%d\n",  ft_printf("[%5s.]",  "abc"));
 	printf ("%d\n\n",  printf("[%5s.]",  "abc"));
@@ -171,9 +189,9 @@ int main ()
 	printf ("%d\n",  ft_printf("[%5s-]",  "abc"));
 	printf ("%d\n\n",  printf("[%5s-]",  "abc"));
 
-		/* negligence flags */
+	/ * negligence flags * /
 
-		/* undef */
+	/ * undef * /
 
 	//printf ("%d\n",  ft_printf("[%0.5s]",  "abc"));
 	//printf ("%d\n\n",  printf("[%0.5s]",  "abc"));
@@ -184,13 +202,20 @@ int main ()
 	printf ("%d\n",  ft_printf("[%]",  "abc"));
 	printf ("%d\n",  ft_printf("[%]",  "abc"));
 
-		/* undef */
-
+	/ * undef * /
+*/
 	//end %s
 
 
 
 
+
+
+
+
+
+
+	/********************     garbage     *******************/
 
 
 	//start bordel
