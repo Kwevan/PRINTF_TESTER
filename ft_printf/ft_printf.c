@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/10 17:23:33 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/10 18:06:38 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ int		ft_print_c(va_list args, t_flags flags)
 	return (1);
 }
 
-int	get_space(t_flags flags, int new_len)
+int	get_space(t_flags flags, int new_len, int nb)
 {
 	int space;
 
 	space = 0;
+	(nb <  0) ? new_len++ : 0;
 	if (flags.min > new_len)
 		space = flags.min - new_len;
 	return (space);
@@ -87,15 +88,15 @@ int		ft_print_d(va_list args, t_flags flags)
 	nb = va_arg(args, int);
 	len = ft_int_len(nb);
 	zero = (flags.dot) ? get_dot_zero(flags, &len, nb) : 0;
-	space = get_space(flags, len + zero);
-	ft_putnchar(' ', space);
+	space = get_space(flags, len + zero, nb);
+	ft_putnchar(' ', flags.zero ? 0 : space);
 	if (nb < 0)
 	{
 		ft_putchar('-');
 		nb = -nb;
 		len++;
 	}
-	ft_putnchar('0', zero);
+	ft_putnchar('0', flags.zero ? space : zero);
 	len > 0 ? ft_putnbr(nb) : 0;
 	return (len + zero + space);
 }

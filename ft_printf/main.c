@@ -12,9 +12,9 @@ int main ()
 	/********************     %d     *******************/
 
 	
-	int size = 1;
+	int size = 2;
 	int i = 0;
-	int nb[1] = {-12};
+	int nb[] = {12, -12};
 	//int nb[6] = {INT_MIN, -451, 0, -0,  451, INT_MAX};
 
 	while (i < size)
@@ -23,9 +23,11 @@ int main ()
 		printf ("%d\n",  ft_printf("1 [%d]",  nb[i]));
 		printf ("%d\n\n",  printf("1 [%d]",  nb[i]));
 
+
 		printf ("%d\n",  ft_printf("[%5d]",  nb[i]));
 		printf ("%d\n\n",  printf("[%5d]",  nb[i]));
 		
+
 		printf ("%d\n",  ft_printf("[%05d]",  nb[i]));
 		printf ("%d\n\n",  printf("[%05d]",  nb[i]));
 
@@ -33,18 +35,17 @@ int main ()
 		printf ("%d\n",  ft_printf("[%.d]",  nb[i]));
 		printf ("%d\n\n",  printf("[%.d]",  nb[i]));
 
-
+		printf ("%d\n",  ft_printf("[%10.d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%10.d]",  nb[i]));
+		
+		printf ("%d\n",  ft_printf("[%.10d]",  nb[i]));
+		printf ("%d\n\n",  printf("[%.10d]",  nb[i]));
+		
 		printf ("%d\n",  ft_printf("5 [%10.6d]",  nb[i]));
 		printf ("%d\n\n",   printf("5 [%10.6d]",  nb[i]));
 
 		printf ("%d\n",  ft_printf("[%0d]",  nb[i]));
 		printf ("%d\n\n",  printf("[%0d]",  nb[i]));
-
-		printf ("%d\n",  ft_printf("[%.d]",  nb[i]));
-		printf ("%d\n\n",  printf("[%.d]",  nb[i]));
-
-		printf ("%d\n",  ft_printf("[%.0d]",  nb[i]));
-		printf ("%d\n\n",  printf("[%.0d]",  nb[i]));
 
 		//here printf print nothing for thr %d
 		printf ("%d\n",  ft_printf("[%.0d]",  nb[i]));
