@@ -6,142 +6,11 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/06 17:42:00 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/10 14:31:09 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-/*
- ** pas compris si je peux nommer mon .h principal comme je veux
- ** return nimp si on passe un unsigned int comme printf
- */
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-void	ft_putnchar(char c, int n)
-{
-	int i;
-
-	i = 0;
-	while (i < n)
-	{
-		write(1, &c, 1);
-		i++;	
-	}
-}
-
-void	ft_putstr(char *str)
-{
-	int i;
-
-	i = 0;
-	while (str[i])
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-}
-
-void	ft_putnstr(char *str, int n)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && i < n)
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
-
-}
-
-int		ft_int_len(int n)
-{
-	int len;
-
-	len = 0;
-	if (!n)
-		return (1);
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-int		ft_u_len(unsigned int n)
-{
-	int len;
-
-	len = 0;
-	if (!n)
-		return (1);
-	while (n != 0)
-	{
-		n /= 10;
-		len++;
-	}
-	return (len);
-}
-
-int		ft_putnbr(int n)
-{
-	char c;
-
-	if (n < 0)
-	{
-		write(1, "-", 1);
-		n = -n;
-	}
-	if (n > 9)
-		ft_putnbr(n / 10);
-	c = '0' + n % 10;
-	write(1, &c, 1);
-	return (1);
-}
-
-int		ft_putnbr_u(unsigned int n)
-{
-	char c;
-
-	if (n > 9)
-		ft_putnbr_u(n / 10);
-	c = '0' + n % 10;
-	ft_putchar(c);
-	return (1);
-}
-
-int		ft_putnbr_base(long n, char *base)
-{
-	if (n < 0)
-	{
-		ft_putchar('-');
-		n = -n;
-	}
-	if (n > 15)
-		ft_putnbr_base(n / 16, base);
-	ft_putchar(base[n % 16]);
-	return (1);
-}
-
-int		ft_len_base(long l, int base)
-{
-	int len;
-
-	len = 0;
-	while (l > base - 1)
-	{
-		l = l / base;
-		len++;
-	}
-	len++;
-	return (len);
-}
 
 int		ft_print_s(va_list args, t_flags flags)
 {
@@ -342,49 +211,6 @@ int		init_functions(int (*functions[]) (va_list, t_flags))
 	return (0);
 }
 
-void	ft_move(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	if (!s1 || !s2)
-		return ;
-	while (s2[i])
-	{
-		s1[i] = s2[i];
-		i++;
-	}
-	s1[i] = '\0';
-}
-
-int		ft_index(char *haystack, char needle)
-{
-	int i;
-
-	i = 0;
-	while (haystack[i])
-	{
-		if (haystack[i] == needle)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
-int		ft_nindex(char *haystack, char needle, int n)
-{
-	int i;
-
-	i = 0;
-	while (haystack[i] && i < n)
-	{
-		if (haystack[i] == needle)
-			return (i);
-		i++;
-	}
-	return (-1);
-}
-
 void	ft_reset_flags(t_flags *flags)
 {
 	flags->dot = 0;
@@ -394,14 +220,14 @@ void	ft_reset_flags(t_flags *flags)
 	flags->max = 0;
 }
 
-int	zero_flag(char *s, int n)
+int	zero_flag(char *s)
 {
 	int i;
 
 	i = 0;
 	if (s[0] == '0')
 		return (1);
-	while(s[i] && i < n)
+	while(s[i])
 	{
 		if (s[i] == '0' && !(ft_index("0123456789.", s[i - 1]) + 1 ))
 			return (1);
@@ -409,15 +235,16 @@ int	zero_flag(char *s, int n)
 	}
 	return (0);
 }
-
-void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
+//comprends plus pk  j'ai du strndup dans parse avec le char de conversion ex je ndup "%2.2s"
+void init_flags(va_list args, t_flags *flags, char *rest)
 {
 	int i;
 	int nb;
 	ft_reset_flags(flags);
 	i = 0;
 	nb = 0;
-	while (rest[i] && i < f_len + 1)
+
+	while (rest[i])
 	{
 		if ((ft_index("0123456789", rest[i]) + 1) || (ft_index("*", rest[i]) + 1))
 		{
@@ -449,23 +276,28 @@ void init_flags(va_list args, t_flags *flags, int f_len, char *rest)
 	}
 	flags->dot = ft_index(rest, '.') + 1 ? 1 : 0; 
 	flags->dash = ft_index(rest, '-') + 1 ? 1 : 0; 
-	flags->zero = zero_flag(rest, f_len);
+	flags->zero = zero_flag(rest);
 }
 
 int		parse(char *rest, va_list args)
 {
-	int len;
-	int pos;
-	int f_len;
+	int	len;
+	int	pos;
+	int	f_len;
+	char	*s_flags;
 	t_flags flags;
 	int		(*functions[9])(va_list, t_flags);
 
 	f_len = 0;
-	init_functions(functions);
 	len = 0;
+	init_functions(functions);
 	while (rest[f_len] && !(ft_index(TYPE_FIELD, rest[f_len]) + 1))
 		f_len++;
-	init_flags(args, &flags, f_len, rest);
+	printf("[%s], [%d]", rest, f_len); //here
+	if (!(s_flags = ft_strndup(rest, f_len + 1)))
+		return (0);
+	init_flags(args, &flags, s_flags);
+	free(s_flags);
 	if ((pos = ft_index(TYPE_FIELD, rest[f_len])) + 1 )
 	{
 		len += functions[pos](args, flags);
@@ -486,7 +318,7 @@ int		ft_printf(const char *string, ...)
 	i = 0;
 	len = 0;
 	va_start(args, string);
-	s = strdup(string);
+	s = ft_strndup(string, ft_strlen(string));
 	while (s[i])
 	{
 		if (s[i] == '%')
