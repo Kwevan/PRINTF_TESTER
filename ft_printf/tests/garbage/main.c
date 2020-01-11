@@ -13,10 +13,10 @@ int main ()
 	/********************     %d     *******************/
 
 	
-	int size = 2;
+	int size = 8;
 	int i = 0;
-	int nb[] = {12, -12};
-	//int nb[6] = {INT_MIN, -451, 0, -0,  451, INT_MAX};
+	//int nb[] = {12, -12};
+	int nb[] = {INT_MIN, -451, -5, 0, -0, 6,  451, INT_MAX};
 
 	while (i < size)
 	{

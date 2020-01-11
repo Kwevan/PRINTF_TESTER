@@ -53,4 +53,18 @@ int				zero_flag(char *s);
 int				init_functions(int (*functions[]) (va_list, t_flags));
 int				parse(char *rest, va_list args);
 
+int             		ft_print_c(va_list args, t_flags flags);
+int            			ft_print_s(va_list args, t_flags flags);
+int				ft_print_p(va_list args, t_flags flags);
+int				ft_print_d(va_list args, t_flags flags);
+int            			ft_print_i(va_list args, t_flags flags);
+int				ft_print_u(va_list args, t_flags flags);
+int				ft_print_x(va_list args, t_flags flags);
+int				ft_print_x_2(va_list args, t_flags flags);
+int				ft_print_p_c(va_list args, t_flags flags);
+
+int				get_dot_zero(t_flags flags, int *len, int nb);
+int				get_space(t_flags flags, int new_len, int nb);
+
+
 #endif

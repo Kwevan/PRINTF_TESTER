@@ -1,51 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_string.c                                     :+:      :+:    :+:   */
+/*   utils_number.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/10 12:21:21 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/10 13:28:25 by kgouacid         ###   ########.fr       */
+/*   Created: 2020/01/10 12:46:54 by kgouacid          #+#    #+#             */
+/*   Updated: 2020/01/10 13:29:18 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_putchar(char c)
+int		ft_int_len(int n)
 {
-	write(1, &c, 1);
+	int len;
+
+	len = 0;
+	if (!n)
+		return (1);
+	while (n != 0)
+	{
+		n /= 10;
+		len++;
+	}
+	return (len);
 }
 
-void	ft_putnchar(char c, int n)
+int		ft_u_len(unsigned int n)
 {
-	while (n > 0)
+	int len;
+
+	len = 0;
+	if (!n)
+		return (1);
+	while (n != 0)
 	{
-		ft_putchar(c);
-		n--;
+		n /= 10;
+		len++;
 	}
+	return (len);
 }
 
-void	ft_putstr(char *str)
+int		ft_len_base(long l, int base)
 {
-	int i;
+	int len;
 
-	i = 0;
-	while (str[i])
+	len = 0;
+	while (l >= base)
 	{
-		ft_putchar(str[i]);
-		i++;
+		l = l / base;
+		len++;
 	}
-}
-
-void	ft_putnstr(char *str, int n)
-{
-	int i;
-
-	i = 0;
-	while (str[i] && i < n)
-	{
-		ft_putchar(str[i]);
-		i++;
-	}
+	len++;
+	return (len);
 }
