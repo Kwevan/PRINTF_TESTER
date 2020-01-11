@@ -7,6 +7,7 @@ SRCS = ft_printf.c \
 	utils/utils_number.c \
 	print/print_string.c \
 	print/print_number.c \
+	get_flags.c \
 	utils_flags.c
 
 OBJS = $(SRCS:.c=.o)
