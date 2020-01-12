@@ -1,11 +1,16 @@
+#REAL_MAIN='main_string.c'
+REAL_MAIN='main_number.c'
+
+
+
 GREEN='\033[1;32m'
 RED='\033[0;31m'
 OFF='\033[0m'
 
+main='main_tmp.c'
 lib='libftprintf.a'
 CC='gcc'
 FLAGS='-Wall -Werror -Wextra'
-main='main_tmp.c'
 r_printf='results/printf.txt'
 r_ft_printf='results/ft_printf.txt'
 GET_HEADER=$(find ../ -name "*.h")
@@ -14,7 +19,8 @@ GET_HEADER=$(find ../ -name "*.h")
 e='-e'
 
 
-cp main.c main_tmp.c
+
+cp ${REAL_MAIN}  ${main}
 make libftprintf.a -C ../
 cp ../libftprintf.a ./
 
@@ -53,6 +59,7 @@ then
 	fi
 else
 	echo  -e "${GREEN}[OK]"
+	echo ${e} "${OFF}"
 fi
 
 

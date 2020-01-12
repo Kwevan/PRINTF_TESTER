@@ -3,10 +3,7 @@
 
 int main ()
 {
-
-
-
-
+		printf ("%d\n\n",  printf("[%5x]", 5));
 
 
 
@@ -85,13 +82,13 @@ int main ()
 
 //		int t[] = {}; idealement 2 int array pour chaque * mais flemme
 
-	int nb_2[] = { -451, -5, 0, -0, 6, 451, 200};
+	int nb_2[] = {-444, -5, 0, -0, 7, 222, 555};
 	int size_2 = 7;
 	int i_2 = 0;
 	
 	while (i_2 < size_2)	
 	{	
-		printf ("%d\n\n",  printf("446[%*d]", nb_2[i_2], nb[i]));
+		printf ("%d\n\n",  printf("446 (%d) [%*d]", nb_2[i_2], nb_2[i_2], nb[i]));
 
 		printf ("%d\n\n",  printf("447[%5.*d]", nb_2[i_2],  nb[i]));
 
@@ -101,12 +98,31 @@ int main ()
 
 		printf ("%d\n\n",  printf("450[%*.d]", nb_2[i_2],  nb[i]));
 
+		printf ("%d\n\n",  printf("441[%5.*d]", nb_2[i_2],  nb[i]));
+//printf error		
+//		printf ("%d\n\n",  printf("452[%*.*d]",  nb_2[i], nb_2[i], nb[i]));
+
+//		printf ("%d\n\n",  printf("453[%0*.*d]",   nb_2[i], nb_2[i], nb[i]));
+
 		i_2++;
 	}
-		printf ("%d\n\n",  printf("451[%0.5d]",  nb[i]));
 	i++;
-	}
+}
 
+		printf ("%d\n\n",  printf("452bb[%0*d]",    -10, 7));
+		printf ("%d\n\n",  printf("453b[%0*.*d]",   5, 10, 7));
+		printf ("%d\n\n",  printf("453c[%0*.*d]",   -5, -10, -7));
+		printf ("%d\n\n",  printf("453d[%0*.*d]",   -5, 10, -7));
+		printf ("%d\n\n",  printf("453e[%0*.*d]",   5, -10, -7));
+		printf ("%d\n\n",  printf("452b[%*.*d]",  -5, -10, -7));
+		printf ("%d\n\n",  printf("452c[%*.*d]",  5, 10, 7));
+		printf ("%d\n\n",  printf("454[%-*.*d]",  5, 10, 7));
+
+		// ça a prit 4 minutes.......................
+		//printf ("%d\n\n",  printf("452 [%*d]", 100000000,  9 ));
+		
+
+		printf("%d\n\n",  printf("455 [%*d]", -1000,  9));
 
 
 
