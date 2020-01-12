@@ -28,7 +28,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 %.o: %.c
-	@gcc ${FLAGS} -I ${HEADER} -o $@ -c $<
+	@gcc ${FLAGS} -include ${HEADER}/ft_printf.h  -o $@ -c $<
 
 clean:
 	rm -rf $(OBJS)

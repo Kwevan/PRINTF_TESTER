@@ -1,12 +1,10 @@
-#include "ft_printf.h"
+//#include "ft_printf.h"
 
 int		ft_print_s(va_list args, t_flags flags)
 {
 	char	*s;
-	int		i;
 	int len;
 	s = va_arg(args, char *);
-	i = 0;
 
 	 len = ft_strlen(s);
 	if(flags.dot)

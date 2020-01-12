@@ -1,4 +1,4 @@
-#include "ft_printf.h"
+//#include "ft_printf.h"
 
 int	get_space(t_flags flags, int new_len, int nb)
 {
