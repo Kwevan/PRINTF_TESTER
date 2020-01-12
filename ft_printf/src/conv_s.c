@@ -6,7 +6,12 @@ int		ft_print_s(va_list args, t_flags flags)
 	int len;
 	s = va_arg(args, char *);
 
-	 len = ft_strlen(s);
+	if (!s)
+	{
+		ft_putstr("(null)");
+		return (ft_strlen("(null)"));
+	}
+	len = ft_strlen(s);
 	if(flags.dot)
 		len = (len > flags.max) ? flags.max : len;
 	(flags.dash) ? ft_putnstr(s, len) : 0;

@@ -69,7 +69,7 @@ fi
 
 rm  ${main} ${lib} a.out 
 
-rm ${r_printf} ${r_ft_printf}
+#rm ${r_printf} ${r_ft_printf}
 
 #rm backup file
 rm main_tmp.c-e #only for mac

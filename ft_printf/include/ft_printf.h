@@ -43,7 +43,7 @@ int				ft_printf(const char *string, ...);
 int				ft_strlen(const char *s);
 int				ft_index(char *haystack, char needle);
 int				ft_nindex(char *haystack, char needle, int n);
-int				ft_putnbr(int n);
+int				ft_putnbr(long n);
 int				ft_putnbr_u(unsigned int n);
 int				ft_putnbr_base(long n, char *base);
 int				ft_int_len(int n);

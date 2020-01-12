@@ -3,7 +3,27 @@
 
 int main ()
 {
-		printf ("%d\n\n",  printf("[%5x]", 5));
+
+
+
+	char	c = 'a';
+//	int		ii = 8;
+	int		j = -12;
+//	int		k = 123456789;
+//	int		l = 0;
+	int		m = -9999999;
+	char	*n = "abcdefghijklmnop";
+
+printf("%s", n);
+
+	printf(" --- Return : %d\n", printf("Simple input test"));
+	//printf(" --- Return : %d\n", printf("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", ii, j, k, l, m, n, c, c, j, j, j));
+                                        printf(" --- Return : %d\n", printf("%d, %s, %c, %d, %u, %x, %X", m, n, c, c, j, j, j));
+
+//		printf ("%d\n\n",  printf("[%5x]", 5));
+
+		printf ("%d\n\n",  printf("[%x]", j));
+		printf ("%d\n\n",  printf("[%X]", j));
 
 
 

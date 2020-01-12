@@ -30,25 +30,24 @@ int	get_dot_zero(t_flags flags, int *len, int nb)
 
 int		ft_print_d(va_list args, t_flags flags)
 {
-	int nb;
+	long nb;
 	int len;
 	int zero;
 	int space;
 
-	nb = va_arg(args, int);
+	nb = (long)va_arg(args, int);
 	len = ft_int_len(nb);
 	zero = (flags.dot) ? get_dot_zero(flags, &len, nb) : 0;
 	space = get_space(flags, len + zero, nb);
-	ft_putnchar(' ', flags.zero ? 0 : space);
+	ft_putnchar(' ', (flags.zero || flags.dash) ? 0 : space);
 	if (nb < 0)
 	{
 		ft_putchar('-');
 		nb = -nb;
 		len++;
 	}
-	ft_putnchar('0', flags.zero ? space : zero);
+	ft_putnchar('0', (flags.zero) ? space : zero);
 	len > 0 ? ft_putnbr(nb) : 0;
+	ft_putnchar(' ', (flags.dash) ? space : 0);
 	return (len + zero + space);
 }
-
-

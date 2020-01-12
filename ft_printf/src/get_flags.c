@@ -73,7 +73,7 @@ void init_flags(va_list args, t_flags *flags, char *rest)
 			}
 			else
 			{
-			if (nb < 0)
+			if (nb < 0 )
 				flags->dot = 0;
 			else
 				flags->max = nb;
@@ -81,6 +81,6 @@ void init_flags(va_list args, t_flags *flags, char *rest)
 		}
 		i++;
 	}
-	if (flags->dot)
+	if (flags->dot || flags->dash)
 		flags->zero = 0;
 }
