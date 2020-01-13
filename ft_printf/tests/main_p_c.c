@@ -46,7 +46,7 @@ int main ()
 
        printf ("%d\n\n",  printf("452bb[%0*%]",    -10));
 
-	//kind of undefined behavior for %%
+	//could be undefined behavior for %% but man not clear
       //  printf ("%d\n\n",  printf("453b[%0*.*%]",   5, 10));
   
         printf ("%d\n\n",  printf("453c[%0*.*%]",   -5, -10));

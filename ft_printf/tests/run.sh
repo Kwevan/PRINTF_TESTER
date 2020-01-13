@@ -1,7 +1,8 @@
 #REAL_MAIN='main_string.c'
 #REAL_MAIN='main_number.c'
 #REAL_MAIN='main_c.c'
-REAL_MAIN='main_p_c.c'
+#REAL_MAIN='main_p_c.c'
+REAL_MAIN='main_p.c'
 
 
 

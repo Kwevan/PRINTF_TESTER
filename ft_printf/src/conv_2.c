@@ -13,12 +13,17 @@
 int		ft_print_p(va_list args, t_flags flags)
 {
 	long n;
+	long len;
+	long space;
 
-	(void)flags;
 	n = va_arg(args, long);
+	len = ft_len_base(n, 16) + 2;
+	space = (flags.min > len) ? flags.min - len : 0;
+	(flags.dash) ? 0 :ft_putnchar(' ', space);
 	ft_putstr("0x");
 	ft_putnbr_base(n, "0123456789abcdef");
-	return (ft_len_base(n, 16) + 2);
+	(flags.dash) ? ft_putnchar(' ', space) : 0;
+	return ((int)(len + space));
 }
 
 int		ft_print_x(va_list args, t_flags flags)
