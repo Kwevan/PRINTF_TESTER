@@ -1,3 +1,5 @@
+<br><br>
+<br><br>
 # ft_printf  (print formated)
 
 * An attempt to recode the printf function
