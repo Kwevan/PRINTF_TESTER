@@ -43,8 +43,12 @@ int main ()
 		}
 		i++;
 	}
+
        printf ("%d\n\n",  printf("452bb[%0*%]",    -10));
-        printf ("%d\n\n",  printf("453b[%0*.*%]",   5, 10));
+
+	//kind of undefined behavior for %%
+      //  printf ("%d\n\n",  printf("453b[%0*.*%]",   5, 10));
+  
         printf ("%d\n\n",  printf("453c[%0*.*%]",   -5, -10));
         printf ("%d\n\n",  printf("453d[%0*.*%]",   -5, 10));
         printf ("%d\n\n",  printf("453e[%0*.*%]",   5, -10));

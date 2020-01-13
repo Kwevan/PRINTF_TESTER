@@ -60,7 +60,7 @@ void	init_flags_p2(t_flags *flags, char *rest, int i, int *nb)
 	}
 }
 
-void	init_flags(va_list args, t_flags *flags, char *rest)
+void	init_flags(va_list args, t_flags *flags, char *rest, int not_ign_0)
 {
 	int i;
 	int nb;
@@ -82,6 +82,6 @@ void	init_flags(va_list args, t_flags *flags, char *rest)
 			init_flags_p2(flags, rest, i, &nb);
 		i++;
 	}
-	if (flags->dot || flags->dash)
+	if ((flags->dot && !not_ign_0) || flags->dash)
 		flags->zero = 0;
 }

@@ -25,7 +25,7 @@ int		parse(char *rest, va_list args, int *len)
 	//todo virer le  + 1
 	if (!(s_flags = ft_strndup(rest, f_len + 1)))
 		return (0);
-	init_flags(args, &flags, s_flags);
+	init_flags(args, &flags, s_flags, ft_index("csp%", rest[f_len]) + 1);
 	free(s_flags);
 	if ((pos = ft_index(TYPE_FIELD, rest[f_len])) + 1)
 	{

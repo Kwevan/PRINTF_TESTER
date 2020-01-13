@@ -35,7 +35,7 @@ void			ft_putnchar(char c, int n);
 void			ft_putstr(char *s);
 void			ft_putnstr(char *s, int n);
 void			ft_move(char *s1, char *s2);
-void			init_flags(va_list args, t_flags *flags, char *rest);
+void			init_flags(va_list args, t_flags *flags, char *rest, int dont_ignore_0);
 void			init_flags_p1(t_flags *flags, char *s_flags);
 void			init_flags_p2(t_flags *flags, char *rest, int i, int *nb);
 void			ft_reset_flags(t_flags *flags);
