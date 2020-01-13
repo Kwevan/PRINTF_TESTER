@@ -1,5 +1,13 @@
-<br><br>
-<br><br>
+#todo
+erreur etrange avec le test 2 de mazoise sur mon mac mais pas celui de l'ecole
+en recopiant la line dans un main daans ft-printf a lecole ca reproduit celui ci
+
+et en ajoutant des %d, a chaquee fois que le nombre dde %d sera impair, ca va bugger...
+
+
+<br><br><br><br><br><br><br><br><br><br>
+#garbage
+
 # ft_printf  (print formated)
 
 * An attempt to recode the printf function
