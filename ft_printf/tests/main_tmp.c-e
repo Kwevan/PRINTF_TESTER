@@ -22,6 +22,8 @@ int main ()
 
 //	printf ("%d\n\n",  printf("[%5x]", 5));
 
+	printf ("%d\n\n",  printf("[%x]", j));
+	printf ("%d\n\n",  printf("[%X]", j));
 
 
 
