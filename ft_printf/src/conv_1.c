@@ -12,10 +12,16 @@
 
 int		ft_print_p_c(va_list args, t_flags flags)
 {
+	int len;
 	(void)args;
-	(void)flags;
-	write(1, "%", 1);
-	return (1);
+	char c;
+
+	c = (flags.zero) ? '0' : ' ' ;
+	len = (flags.min) ? flags.min : 1;
+	(flags.dash) ? 0 :ft_putnchar(c, len - 1);
+	ft_putchar('%');
+	(flags.dash) ?  ft_putnchar(c, len - 1) : 0;
+	return (len);
 }
 
 int		ft_print_c(va_list args, t_flags flags)

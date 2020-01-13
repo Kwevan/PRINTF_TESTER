@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h> //remov&@
 
 # define TYPE_FIELD "cspdiuxX%"
 # define FLAGS "0-*."
