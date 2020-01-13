@@ -6,11 +6,9 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 12:21:21 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/10 13:28:25 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:20:06 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include "ft_printf.h"
 
 void	ft_putchar(char c)
 {

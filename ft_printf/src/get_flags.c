@@ -6,11 +6,9 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 12:29:55 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/11 12:33:38 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:02:16 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include "ft_printf.h"
 
 void	ft_reset_flags(t_flags *flags)
 {
@@ -21,16 +19,16 @@ void	ft_reset_flags(t_flags *flags)
 	flags->max = 0;
 }
 
-int	zero_flag(char *s)
+int		zero_flag(char *s)
 {
 	int i;
 
 	i = 0;
 	if (s[0] == '0')
 		return (1);
-	while(s[i])
+	while (s[i])
 	{
-		if (s[i] == '0' && !(ft_index("0123456789.", s[i - 1]) + 1 ))
+		if (s[i] == '0' && !(ft_index("0123456789.", s[i - 1]) + 1))
 			return (1);
 		i++;
 	}
@@ -40,23 +38,40 @@ int	zero_flag(char *s)
 void	init_flags_p1(t_flags *flags, char *s_flags)
 {
 	ft_reset_flags(flags);
-	flags->dot = ft_index(s_flags, '.') + 1 ? 1 : 0; 
-	flags->dash = ft_index(s_flags, '-') + 1 ? 1 : 0; 
+	flags->dot = ft_index(s_flags, '.') + 1 ? 1 : 0;
+	flags->dash = ft_index(s_flags, '-') + 1 ? 1 : 0;
 	flags->zero = zero_flag(s_flags);
-
 }
 
-void init_flags(va_list args, t_flags *flags, char *rest)
+void	init_flags_p2(t_flags *flags, char *rest, int i, int *nb)
+{
+	if (!(ft_nindex(rest, '.', i) + 1))
+	{
+		flags->min = (*nb < 0) ? -(*nb) : *nb;
+		(*nb < 0) ? flags->dash = 1 : 0;
+		*nb = 0;
+	}
+	else
+	{
+		if (*nb < 0)
+			flags->dot = 0;
+		else
+			flags->max = *nb;
+	}
+}
+
+void	init_flags(va_list args, t_flags *flags, char *rest)
 {
 	int i;
 	int nb;
+
 	init_flags_p1(flags, rest);
 	i = 0;
 	nb = 0;
-
 	while (rest[i])
 	{
-		if ((ft_index("0123456789", rest[i]) + 1) || (ft_index("*", rest[i]) + 1))
+		if ((ft_index("0123456789", rest[i]) + 1)
+				|| (ft_index("*", rest[i]) + 1))
 		{
 			if (rest[i] == '*')
 				nb = va_arg(args, int);
@@ -64,21 +79,7 @@ void init_flags(va_list args, t_flags *flags, char *rest)
 				nb = nb * 10 + rest[i] - '0';
 		}
 		else
-		{
-			if (!(ft_nindex(rest, '.', i) + 1))
-			{
-				flags->min = (nb < 0) ? -nb : nb;
-				(nb < 0) ? flags->dash = 1 : 0 ;
-				nb = 0;
-			}
-			else
-			{
-			if (nb < 0 )
-				flags->dot = 0;
-			else
-				flags->max = nb;
-			}
-		}
+			init_flags_p2(flags, rest, i, &nb);
 		i++;
 	}
 	if (flags->dot || flags->dash)

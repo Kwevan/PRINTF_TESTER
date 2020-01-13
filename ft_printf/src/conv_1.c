@@ -1,4 +1,14 @@
-//#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   conv_1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/13 14:39:33 by kgouacid          #+#    #+#             */
+/*   Updated: 2020/01/13 16:03:37 by kgouacid         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int		ft_print_p_c(va_list args, t_flags flags)
 {
@@ -11,11 +21,15 @@ int		ft_print_p_c(va_list args, t_flags flags)
 int		ft_print_c(va_list args, t_flags flags)
 {
 	int c;
+	int len;
 
-	(void)flags;
 	c = va_arg(args, int);
-	write(1, &c, 1);
-	return (1);
+
+	len =  (flags.min == 0) ? 1 : flags.min;
+	(flags.dash) ? 0 :ft_putnchar(' ', len - 1);
+	ft_putchar(c);
+	(flags.dash) ? ft_putnchar(' ', len - 1) : 0;
+	return (len);
 }
 
 int		ft_print_u(va_list args, t_flags flags)
@@ -27,6 +41,3 @@ int		ft_print_u(va_list args, t_flags flags)
 	ft_putnbr_u(n);
 	return (ft_u_len(n));
 }
-
-
-

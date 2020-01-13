@@ -6,11 +6,9 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 11:16:25 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/10 12:13:20 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/13 15:11:59 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-//#include "ft_printf.h"
 
 void	ft_move(char *s1, char *s2)
 {

@@ -1,5 +1,6 @@
 #REAL_MAIN='main_string.c'
-REAL_MAIN='main_number.c'
+#REAL_MAIN='main_number.c'
+REAL_MAIN='main_c.c'
 
 
 
@@ -49,21 +50,41 @@ then
 	echo "------------------------------------------------------------------------------------------------------------------------------"
 	echo ${e} "\n${RED}[KO]"
 	echo ${e} "${OFF}"
-	echo -e "run vim diff ? (Y or N)\n"
-	read answer
-	if [ ${answer} == "y" ] || [ ${answer} == "Y" ] ||  [ ${answer} == "yes" ] || [ ${answer} == "YES" ]
-	then
-		vim -d ${r_printf} ${r_ft_printf}
-	else
-		echo "ok";
-	fi
+##	echo -e "run vim diff ? (Y or N)\n"
+#	read answer
+#	if [ ${answer} == "y" ] || [ ${answer} == "Y" ] ||  [ ${answer} == "yes" ] || [ ${answer} == "YES" ]
+#	then
+#		vim -d ${r_printf} ${r_ft_printf}
+#	else
+#		echo "ok";
+#	fi
 else
-	echo  -e "${GREEN}[OK]"
+	echo  -e "${GREEN}[OK] - All GOOD"
 	echo ${e} "${OFF}"
 fi
 
 
 
+while true
+do
+
+	echo -e "type: 1, 2, 3, or 4\n\n\n[ show diff ] (1)  |  [ show printf results ] (2)  |  [ show ft_printf results ] (3)  |  [ exit ] (4)\n"
+
+	read answer
+	if [ ${answer} == "1" ]
+	then
+		vim -d ${r_printf} ${r_ft_printf}
+	elif [ ${answer} == "2" ]
+	then
+ 		vim ${r_printf}
+	elif [ ${answer} == "3" ]
+	then
+ 		vim ${r_printf}
+	elif [ ${answer} == "4" ]
+	then
+		break
+	fi
+done
 
 
 
