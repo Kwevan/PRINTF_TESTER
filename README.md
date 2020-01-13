@@ -4,6 +4,7 @@ en recopiant la line dans un main daans ft-printf a lecole ca reproduit celui ci
 
 et en ajoutant des %d, a chaquee fois que le nombre dde %d sera impair, ca va bugger...
 
+ok apres une demi journee de recherche, ca venait du cast en long ppour le %x et %X plutot que unsigned int gg la lecture du man
 
 <br><br><br><br><br><br><br><br><br><br>
 #garbage
