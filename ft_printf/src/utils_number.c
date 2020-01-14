@@ -6,11 +6,11 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/10 12:46:54 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/13 15:12:05 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/14 13:46:39 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_int_len(int n)
+int				ft_int_len(int n)
 {
 	int len;
 
@@ -25,9 +25,9 @@ int		ft_int_len(int n)
 	return (len);
 }
 
-int		ft_u_len(unsigned int n)
+unsigned int	ft_u_len(unsigned int n)
 {
-	int len;
+	unsigned int len;
 
 	len = 0;
 	if (!n)
@@ -40,7 +40,7 @@ int		ft_u_len(unsigned int n)
 	return (len);
 }
 
-int		ft_len_base(long l, int base)
+int				ft_len_base(long l, int base)
 {
 	int len;
 

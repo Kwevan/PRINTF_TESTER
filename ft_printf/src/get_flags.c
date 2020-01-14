@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 12:29:55 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/13 15:02:16 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:34:40 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_reset_flags(t_flags *flags)
 	flags->max = 0;
 }
 
-int		zero_flag(char *s)
+int		ft_zero_flag(char *s)
 {
 	int i;
 
@@ -35,15 +35,15 @@ int		zero_flag(char *s)
 	return (0);
 }
 
-void	init_flags_p1(t_flags *flags, char *s_flags)
+void	ft_init_flags_p1(t_flags *flags, char *s_flags)
 {
 	ft_reset_flags(flags);
 	flags->dot = ft_index(s_flags, '.') + 1 ? 1 : 0;
 	flags->dash = ft_index(s_flags, '-') + 1 ? 1 : 0;
-	flags->zero = zero_flag(s_flags);
+	flags->zero = ft_zero_flag(s_flags);
 }
 
-void	init_flags_p2(t_flags *flags, char *rest, int i, int *nb)
+void	ft_init_flags_p2(t_flags *flags, char *rest, int i, int *nb)
 {
 	if (!(ft_nindex(rest, '.', i) + 1))
 	{
@@ -60,12 +60,12 @@ void	init_flags_p2(t_flags *flags, char *rest, int i, int *nb)
 	}
 }
 
-void	init_flags(va_list args, t_flags *flags, char *rest, int not_ign_0)
+void	ft_init_flags(va_list args, t_flags *flags, char *rest, int not_ign_0)
 {
 	int i;
 	int nb;
 
-	init_flags_p1(flags, rest);
+	ft_init_flags_p1(flags, rest);
 	i = 0;
 	nb = 0;
 	while (rest[i])
@@ -79,7 +79,7 @@ void	init_flags(va_list args, t_flags *flags, char *rest, int not_ign_0)
 				nb = nb * 10 + rest[i] - '0';
 		}
 		else
-			init_flags_p2(flags, rest, i, &nb);
+			ft_init_flags_p2(flags, rest, i, &nb);
 		i++;
 	}
 	if ((flags->dot && !not_ign_0) || flags->dash)

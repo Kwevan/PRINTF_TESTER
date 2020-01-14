@@ -6,7 +6,7 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/15 15:58:03 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/13 15:09:39 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:31:43 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
  ** c s p d i u x X %
 */
 
-int		init_functions(int (*functions[]) (va_list, t_flags))
+int		ft_init_functions(int (*functions[]) (va_list, t_flags))
 {
 	functions[0] = ft_print_c;
 	functions[1] = ft_print_s;
@@ -42,7 +42,7 @@ int		ft_printf(const char *string, ...)
 	while (s[i])
 	{
 		if (s[i] == '%')
-			parse(&s[i + 1], args, &len);
+			ft_parse(&s[i + 1], args, &len);
 		else
 			(++len) ? ft_putchar(s[i]) : 0;
 		i++;

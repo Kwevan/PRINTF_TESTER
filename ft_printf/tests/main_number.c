@@ -137,6 +137,7 @@ int main ()
 	printf ("%d\n\n",  printf("454[%-*.*d]",  5, 10, 7));
 
 	// ça a prit 4 minutes.......................
+	//cmt test INT_MAX ?
 	//printf ("%d\n\n",  printf("452 [%*d]", 100000000,  9 ));
 
 

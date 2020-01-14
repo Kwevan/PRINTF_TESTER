@@ -1,8 +1,12 @@
-#REAL_MAIN='main_string.c'
-#REAL_MAIN='main_number.c'
-#REAL_MAIN='main_c.c'
-#REAL_MAIN='main_p_c.c'
-REAL_MAIN='main_p.c'
+REAL_MAIN1='main_string.c'
+REAL_MAIN2='main_number.c'
+REAL_MAIN3='main_c.c'
+REAL_MAIN4='main_p_c.c'
+REAL_MAIN5='main_p.c'
+REAL_MAIN6='main_u.c'
+REAL_MAIN7='main_x.c'
+
+REAL_MAIN=${REAL_MAIN7}
 
 
 
@@ -38,6 +42,7 @@ sed -i -e "s/"printf"/"ft_printf"/g" ${main}
 ${CC} ${FLAGS} -include ${GET_HEADER} ${main} ${lib}  && ./a.out > ${r_ft_printf}
 
 
+#diff -U 0 file1 file2 | grep -v ^@ | wc -l
 
 DIFF=$(diff ${r_printf} ${r_ft_printf})
 

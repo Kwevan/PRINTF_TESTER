@@ -6,11 +6,11 @@
 /*   By: kgouacid <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 14:40:31 by kgouacid          #+#    #+#             */
-/*   Updated: 2020/01/13 15:19:17 by kgouacid         ###   ########.fr       */
+/*   Updated: 2020/01/14 14:30:13 by kgouacid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		get_space(t_flags flags, int new_len, int nb)
+int		ft_get_space(t_flags flags, int new_len, int nb)
 {
 	int space;
 
@@ -21,7 +21,7 @@ int		get_space(t_flags flags, int new_len, int nb)
 	return (space);
 }
 
-int		get_dot_zero(t_flags flags, int *len, int nb)
+int		ft_get_dot_zero(t_flags flags, int *len, int nb)
 {
 	int zero;
 
@@ -45,8 +45,8 @@ int		ft_print_d(va_list args, t_flags flags)
 
 	nb = (long)va_arg(args, int);
 	len = ft_int_len(nb);
-	zero = (flags.dot) ? get_dot_zero(flags, &len, nb) : 0;
-	space = get_space(flags, len + zero, nb);
+	zero = (flags.dot) ? ft_get_dot_zero(flags, &len, nb) : 0;
+	space = ft_get_space(flags, len + zero, nb);
 	ft_putnchar(' ', (flags.zero || flags.dash) ? 0 : space);
 	if (nb < 0)
 	{
