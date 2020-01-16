@@ -19,10 +19,15 @@ GET_HEADER=$(find ../ -name "*.h")
 e='-e'
 
 
+echo -e "Compile error\n\nMaybe its this: This test doesn't work if you don't include the prototype of ft_printf in your .h" > ${r_ft_printf}
+echo -e "Compile error\n\n" > ${r_printf}
+
 
 cp ${REAL_MAIN}  ${main}
 make libftprintf.a -C ../
 cp ../libftprintf.a ./
+
+
 
 
 
@@ -35,7 +40,6 @@ sed -i -e "s/"printf"/"ft_printf"/g" ${main}
 ${CC} ${FLAGS} -include ${GET_HEADER} ${main} ${lib}  && ./a.out > ${r_ft_printf}
 
 
-#diff -U 0 file1 file2 | grep -v ^@ | wc -l
 
 DIFF=$(diff ${r_printf} ${r_ft_printf})
 
