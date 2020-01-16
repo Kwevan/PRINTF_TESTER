@@ -69,7 +69,7 @@ int main ()
 		//error
 		printf ("%d\n\n",  printf("[%0.5d]",  nb[i]));
 
-		printf ("%d    |    the 0 flag is ignore because of the precision \n", printf("[%010.5d]", nb[i]));
+		printf ("%d    |    the 0 flag is ignored because of the precision \n", printf("[%010.5d]", nb[i]));
 
 		printf ("%d\n\n",    printf("[%010.*d]", -5, nb[i]));
 
