@@ -1,7 +1,11 @@
 
 REAL_MAIN=${1}
 
-
+if [ "$REAL_MAIN" == "" ]
+then
+	echo -e "\n (It needs a src_file to work)\nTry running [ bash dont_run_me.sh src/main_char.c ] for example to test only char \n or simply run [ bash run.sh ] \n"
+	exit 1
+fi
 
 GREEN='\033[1;32m'
 RED='\033[0;31m'
@@ -20,7 +24,7 @@ e='-e'
 
 
 echo -e "Compile error\n\nMaybe its this: This test doesn't work if you don't include the prototype of ft_printf in your .h" > ${r_ft_printf}
-echo -e "Compile error\n\n" > ${r_printf}
+echo -e "\nCompile error\n\n" > ${r_printf}
 
 
 cp ${REAL_MAIN}  ${main}
@@ -46,12 +50,11 @@ DIFF=$(diff ${r_printf} ${r_ft_printf})
 if [ "$DIFF" != "" ]
 then
 	
-       ERROR_COUNT=$(diff -U 0 ${r_printf} ${r_ft_printf} | grep -v ^@ | wc -l)
+       ERROR_COUNT=$(diff -U 0 ${r_printf} ${r_ft_printf} | grep ^@ | wc -l)
 	echo  -e " \n \n \n \n PRINTF" >> ${r_printf}
 	echo  -e "\n\n\n\n FT_PRINTF" >> ${r_ft_printf}
 	
 	sdiff -s ${r_printf} ${r_ft_printf}
-	echo  "\n\nleft : printf" >> ${r_printf}
 	echo "------------------------------------------------------------------------------------------------------------------------------"
 	echo ${e} "\n${RED}[KO]  ${ERROR_COUNT} errors"
 	if [ "$REAL_MAIN" == "src/main_pointer.c" ]
