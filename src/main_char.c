@@ -4,7 +4,7 @@
 
 int main ()
 {
-	/********************     %c     *******************/
+	printf ("********************     %%c     *******************\n\n");
 
 
 	int i = 67;
@@ -12,15 +12,15 @@ int main ()
 	{
 
 		printf ("%d\n\n",  printf("1 [%c]",  i));
-		printf ("%d\n\n",  printf("1 [%1c]",  i));
-		printf ("%d\n\n",  printf("1 [%15c]",  i));
-		printf ("%d\n\n",  printf("[%-5c]", i));
+		printf ("%d\n\n",  printf("2 [%1c]",  i));
+		printf ("%d\n\n",  printf("3 [%15c]",  i));
+		printf ("%d\n\n",  printf("4 [%-5c]", i));
 
-		printf ("%d\n\n",  printf("[%.c]",  i));
+		printf ("%d\n\n",  printf("5 [%.c]",  i));
 
-		printf ("%d\n\n",  printf("[%10.c]",  i));
+		printf ("%d\n\n",  printf("6 [%10.c]",  i));
 
-		printf ("%d\n\n",  printf("[%5.c]",  i));
+		printf ("%d\n\n",  printf("7 [%5.c]",  i));
 
 
 	int nb_2[] = {-444, -5, 0, -0, 7, 222, 555};

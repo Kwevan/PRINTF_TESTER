@@ -5,6 +5,7 @@
 int main ()
 {
 
+	//start ok not only numbers
 
 	char	c = 'a';
 	int		ii = 8;
@@ -14,13 +15,12 @@ int main ()
 	int		m = -9999999;
 	char	*n = "abcdefghijklmnop";
 
-//	printf("%s\n\n", n);
 
 	printf(" --- Return : %d\n\n", printf("Simple input test"));
 	printf(" --- Return : %d\n\n", printf("%i, %d, %d, %d, %d, %s, %c, %d, %u, %x, %X", ii, j, k, l, m, n, c, c, j, j, j));
 	printf(" --- Return : %d\n\n", printf("%d, %s, %c, %d, %u, %x, %X", m, n, c, c, j, j, j));
 
-//	printf ("%d\n\n",  printf("[%5x]", 5));
+	// end
 
 
 

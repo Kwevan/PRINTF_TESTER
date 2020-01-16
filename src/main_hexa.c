@@ -9,7 +9,6 @@ int main ()
 
 	int array_size = 5;
 	int i = 0;
-	//int nb[] = {12, -12};
 	unsigned int nb[] = {0, 6, 451, 2000000, UINT_MAX};
 
 	while (i < array_size)
@@ -44,8 +43,6 @@ int main ()
 		printf ("%d\n\n",  printf("5 [%-5x]",  nb[i]));
 
 		printf ("%d\n\n",  printf("5.1 ![%-.5x]",  nb[i]));
-
-		//	*
 
 
 		int nb_2[] = {-444, -5, 0, -0, 7, 222, 555};
@@ -89,7 +86,7 @@ int main ()
 
 
 
-	printf ("%d\n\n",  printf("5 [%-5X]",  5));
-	printf ("%d\n\n",  printf("5 [%-5i]",  5));
+	printf ("%d\n\n",  printf("55 [%-5X]",  5));
+	printf ("%d\n\n",  printf("56 [%-5i]",  5));
 
 }

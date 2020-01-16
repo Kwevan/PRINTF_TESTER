@@ -1,10 +1,3 @@
-REAL_MAIN1='main_string.c'
-REAL_MAIN2='main_number.c'
-REAL_MAIN3='main_c.c'
-REAL_MAIN4='main_p_c.c'
-REAL_MAIN5='main_p.c'
-REAL_MAIN6='main_u.c'
-REAL_MAIN7='main_x.c'
 
 REAL_MAIN=${1}
 
@@ -57,7 +50,7 @@ then
 	echo  "\n\nleft : printf" >> ${r_printf}
 	echo "------------------------------------------------------------------------------------------------------------------------------"
 	echo ${e} "\n${RED}[KO]  ${ERROR_COUNT} errors"
-	if [ "$REAL_MAIN" == "main_p.c" ]
+	if [ "$REAL_MAIN" == "src/main_pointer.c" ]
 	then
 		echo "But it's ok, it is the pointer test, you have to compare the result by yourself"
 	fi 
@@ -72,21 +65,21 @@ fi
 while true
 do
 
-	echo -e "Please select: 1, 2, 3, or 4\n\n\n[ show diff ] (1)  |  [ show printf results ] (2)  |  [ show ft_printf results ] (3)  |  [ next ] (4)\n"
+	echo -e "Please select: 1, 2, 3, or 4\n\n\n[ next (1) ]  |  [ show diff (2) ]  |  [ show printf results ] (3)  |  [ show ft_printf results ] (4)  |\n"
 
 	read answer
 	if [ ${answer} == "1" ]
 	then
-		vim -d ${r_printf} ${r_ft_printf}
+		break
 	elif [ ${answer} == "2" ]
 	then
- 		vim ${r_printf}
+		vim -d ${r_printf} ${r_ft_printf}
 	elif [ ${answer} == "3" ]
 	then
- 		vim ${r_printf}
+ 		vim ${r_ft_printf}
 	elif [ ${answer} == "4" ]
 	then
-		break
+		vim ${r_ft_printf}
 	fi
 done
 
@@ -94,7 +87,7 @@ done
 
 rm  ${main} ${lib} a.out 
 
-#rm ${r_printf} ${r_ft_printf}
+rm ${r_printf} ${r_ft_printf}
 
 #rm backup file
 rm main_tmp.c-e #only for mac
