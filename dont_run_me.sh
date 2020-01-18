@@ -23,7 +23,7 @@ GET_HEADER=$(find ../ -name "*.h")
 e='-e'
 
 
-echo -e "Compile error\n\nMaybe its this: This test doesn't work if you don't include the prototype of ft_printf in your .h" > ${r_ft_printf}
+echo -e "Compile error" > ${r_ft_printf}
 echo -e "\nCompile error\n\n" > ${r_printf}
 
 
@@ -41,13 +41,18 @@ ${CC} ${FLAGS} ${main} ${lib}  && ./a.out > ${r_printf}
 sed -i -e "s/"printf"/"ft_printf"/g" ${main}
 
 
-${CC} ${FLAGS} -include ${GET_HEADER} ${main} ${lib}  && ./a.out > ${r_ft_printf}
+${CC} ${FLAGS} -w -include ${GET_HEADER} ${main} ${lib}  && ./a.out > ${r_ft_printf}
 
 
 
 DIFF=$(diff ${r_printf} ${r_ft_printf})
 
-if [ "$DIFF" != "" ]
+FIRST_LINE=$(head -n 1 results/ft_printf.txt)
+
+if [ "$FIRST_LINE" == "Compile error" ]
+then
+                echo -e "Ouch, compile error, maybe from here maybe not"
+elif [ "$DIFF" != "" ]
 then
 	
        ERROR_COUNT=$(diff -U 0 ${r_printf} ${r_ft_printf} | grep ^@ | wc -l)
@@ -55,15 +60,20 @@ then
 	echo  -e "\n\n\n\n FT_PRINTF" >> ${r_ft_printf}
 	
 	sdiff -s ${r_printf} ${r_ft_printf}
+
 	echo "------------------------------------------------------------------------------------------------------------------------------"
-	echo ${e} "\n${RED}[KO]  ${ERROR_COUNT} errors"
+
+
 	if [ "$REAL_MAIN" == "src/main_pointer.c" ]
 	then
-		echo "But it's ok, it is the pointer test, you have to compare the result by yourself"
+		echo ${e} "${GREEN}"
+		echo "[ KO ] But it's ok, it is the pointer test, you have to compare the results by yourself"
+	else
+		echo ${e} "\n${RED}[ KO ]  ${ERROR_COUNT} errors"
 	fi 
 	echo ${e} "${OFF}"
 else
-	echo  -e "\n${GREEN}[OK] - All GOOD"
+	echo  -e "\n${GREEN}[ OK ] - All GOOD"
 	echo ${e} "${OFF}"
 fi
 
