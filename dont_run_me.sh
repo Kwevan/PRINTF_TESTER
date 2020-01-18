@@ -34,7 +34,6 @@ cp ../libftprintf.a ./
 
 
 
-
 ${CC} ${FLAGS} ${main} ${lib}  && ./a.out > ${r_printf}
 
 
