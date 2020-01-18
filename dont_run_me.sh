@@ -42,7 +42,12 @@ sed -i -e "s/"printf"/"ft_printf"/g" ${main}
 
 ${CC} ${FLAGS} -w -include ${GET_HEADER} ${main} ${lib}  && ./a.out > ${r_ft_printf}
 
-
+if [ $? -eq 139 ]
+then
+ 	echo -e "${RED}[ Not good, It crashed ! ]"
+	echo -e "\nThe tests's results before your crash will still be printed into results/ft_printf.txt"
+	echo -e "${OFF}"
+else
 
 DIFF=$(diff ${r_printf} ${r_ft_printf})
 
@@ -76,7 +81,7 @@ else
 	echo ${e} "${OFF}"
 fi
 
-
+fi
 
 while true
 do
