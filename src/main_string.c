@@ -50,6 +50,7 @@ int main ()
 
 		//no 0 flag with %s
 //		printf ("%d\n\n",  printf("15 [%0.5s]",  nb[i]));
+//		printf( "[%05.5s]", "dsf"); 
 
 		printf ("%d\n\n",  printf("11 [%10.5s]",  nb[i]));
 
